@@ -1,0 +1,6 @@
+@import url('https://handy-ui.netlify.app/css/components.css');
+
+:root {
+    --primary-color:#022480;
+    --alert-primary:red;
+}

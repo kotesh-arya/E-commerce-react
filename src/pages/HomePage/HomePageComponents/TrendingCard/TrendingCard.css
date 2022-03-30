@@ -1,0 +1,52 @@
+.trending-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 5rem;
+}
+
+.trend-card-title {
+    font-size: var(--larger-font-size);
+    font-weight: var(--bolder-font-weight);
+    margin: 1rem 0;
+}
+
+.trending-card {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    background-color: var(--white);
+    padding: 4rem;
+}
+
+.card-content {
+    text-align: left;
+}
+
+.footer {
+    margin-top: 1rem;
+    margin-left: -10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--larger-font-size);
+    font-weight: var(--bolder-font-weight);
+}
+
+.card-footer-link {
+    background-color: var(--white);
+    color: var(--primary-color);
+    border: 3px solid var(--primary-color);
+    padding: 10px 10px;
+    font-weight: var(--bolder-font-weight);
+    font-size: 15px;
+}
+
+.card-footer-link-buy {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 10px;
+    font-weight: var(--bold-font-weight);
+    font-size: 15px;
+}
