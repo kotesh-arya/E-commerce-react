@@ -1,0 +1,87 @@
+.navigation-container {
+    padding: 1rem 0;
+}
+
+.logo-input {
+    display: flex;
+    width: 70%;
+    margin-left: 1.5rem;
+}
+
+.search-input-container {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    padding: 0 1rem;
+}
+
+.input-icon {
+    position: relative;
+    right: 3rem;
+    padding: 5px;
+}
+
+.header-input {
+    padding: 13px;
+    width: 90%;
+    border-radius: 3rem;
+    border: none;
+}
+
+.basic {
+    border: 0px;
+}
+
+.number-one {
+    background-color: var(--alert-primary);
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    position: relative;
+    left: -10px;
+    margin-right: -1.3rem;
+    bottom: 13px;
+    border: 3px solid var(--primary-color);
+    font-size: 14px;
+    font-weight: bolder;
+    color: var(--white);
+    text-align: center;
+}
+
+.link-button {
+    text-decoration: none;
+    background-color: var(--white);
+    color: var(--black);
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.social-icons {
+    font-size: 2.1rem;
+}
+
+.btn-link .link-button {
+    color: var(--black);
+}
+
+.btn-link {
+    border: none;
+    padding: 0px;
+}
+
+.main-links {
+    display: flex;
+    justify-content: space-between;
+    width: 18%;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+.nav-heading {
+    color: var(--white);
+}
+
+.react-link {
+    text-decoration: none;
+    color: var(--white);
+}

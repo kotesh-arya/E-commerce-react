@@ -1,0 +1,32 @@
+ .shop-button {
+     background-color: var(--primary-color);
+     color: var(--white);
+     padding: 1.5rem;
+     margin-top: 3rem;
+     right: 21rem;
+     text-decoration: none;
+     position: absolute;
+     font-weight: var(--bolder-font-weight);
+     font-size: 1.2rem;
+     border: none;
+ }
+
+ .banner-button-text {
+     color: var(--white);
+     padding: auto;
+ }
+
+ .banner-image {
+     width: 100%;
+ }
+
+ .banner-text {
+     position: absolute;
+     left: 12rem;
+     bottom: 5rem;
+ }
+
+ .header-text {
+     color: var(--primary-color);
+     font-size: 4.5rem;
+ }

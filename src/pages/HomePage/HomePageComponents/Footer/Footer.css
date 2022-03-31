@@ -1,0 +1,21 @@
+.footer-icons {
+    color: var(--white);
+    padding: 1rem;
+}
+
+.main-footer {
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    font-weight: var(--medium-font-weight);
+}
+
+.footer-text {
+    font-size: var(--larger-font-size);
+    font-weight: var(--bolder-font-weight);
+}
+
+.footer-icon-link {
+    color: var(--white);
+    margin: 5rem 1rem;
+}
