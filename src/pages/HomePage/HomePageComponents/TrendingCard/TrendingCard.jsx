@@ -1,13 +1,13 @@
 import React from 'react'
 import { trending } from '../../../../backend/db/trending'
 import '../../../../Colours/colours.css';
-import "../TrendingCard/TrendingCard.css"
+import "../TrendingCard/TrendingCard.css";
 function TrendingCard() {
 return (
 <div className="trending-container">
     {
     trending.map(item=>{
-    return <div className="trending-card">
+    return <div key={item._id} className="trending-card">
         <img className="horizontal-card-image " src={item.imageSource} />
         <div className="card-content">
             <div className=" trend-card-title">
