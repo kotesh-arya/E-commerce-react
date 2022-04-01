@@ -1,47 +1,23 @@
 import React from 'react'
-import { NavBar } from '../HomePage/HomePageComponents/NavBar/NavBar';
-import {Footer} from '../HomePage/HomePageComponents/Footer/Footer';
+import { NavBar,Footer } from '../HomePage/HomePageComponents';
 import "../../Colours/colours.css";
 import "../Cart/Cart.css"
 import { cartItems } from '../../backend/db/cart-items';
-
+import{CartProduct} from "../Cart/CartProduct"
 function Cart() {
 return (
 
 <div>
 
     <NavBar />
-    
+
     <div className="cart-container">
 
         <h1 className="cart-header">My Cart</h1>
         <div className="item-price-container-row">
             {
             cartItems.map(item=>{
-            return <div className="cart-card">
-
-                <img className="horizontal-card-image hat " src={item.imageSource} />
-                <div className="image-card-content-col">
-                    <div className="card-content">
-                        <div className=" cart-card-title">
-                            {item.cartItemTitle}
-                        </div>
-                        <div className="card-content price">
-                            <h2>Rs.{item.price} <strike><span className="light-text">Rs.2000</span></strike> </h2>
-                            <h3>(75% off)</h3>
-                        </div>
-                        <div className="quantity-setting">
-                            <p>Quantity:</p>
-                            <button className="btn-counter">-</button>
-                            <input className="quantity-input" type="text" />
-                            <button className="btn-counter">+</button>
-                        </div>
-                        <button className="btn btn-primary max-width-btn">Remove from cart</button>
-
-                        <button className="btn outline-primary max-width-btn">Move to Wishlist</button>
-                    </div>
-                </div>
-            </div>
+            return <CartProduct key={item._id} imageSource={item.imageSource} title={item.title} price={item.price} />
 
             })
             }

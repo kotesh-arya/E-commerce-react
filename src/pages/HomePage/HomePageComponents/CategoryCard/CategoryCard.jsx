@@ -7,7 +7,7 @@ return (
 <div className="categories">
     {
     categories.map(category=>{
-    return <div className="card">
+    return <div key={category._id} className="card">
         <img src={category.imageSource} alt="watch" className="card-image" />
         <div className="card-title">{category.categoryName}</div>
     </div>
