@@ -1,0 +1,146 @@
+.filter-section-col {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    background-color: var(--white);
+}
+
+.price-slider {
+    padding: 0.8rem 2rem;
+}
+
+.rating-container {
+    padding: 0.6rem 3rem;
+    font-size: 1.5rem;
+    text-align: left;
+
+}
+
+.rating-item {
+    list-style-type: none;
+    margin: 1rem 0;
+}
+
+.sorting-container {
+    padding: 0.6rem 3rem;
+    font-size: 1.5rem;
+    text-align: left;
+
+}
+
+.sorting-item {
+    list-style-type: none;
+    margin: 1rem 0;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+}
+
+.price-slider {
+    display: flex;
+    flex-direction: column;
+}
+
+.slider-ranges {
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-container-col {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.6rem 3rem;
+    font-size: 1.5rem;
+}
+
+.category-one,
+.category-two {
+    margin: 1rem 0;
+    text-align: left;
+}
+
+.category-check {
+    height: 15px;
+    width: 15px;
+    margin: 0 8px 0 0;
+}
+
+.product-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.product-filter-container {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.product-container {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 2rem;
+    margin-left: 4rem;
+}
+
+.product-header {
+    margin: 2rem 0 0 6rem;
+}
+
+.card {
+    margin: 1rem;
+}
+
+.badge-card {
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.image-icon-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 50%;
+    position: relative;
+}
+
+.stacked-icon {
+    position: absolute;
+    right: 8px;
+}
+
+.product-image-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.product-image {
+    margin-left: auto;
+}
+
+
+.product-card-content {
+    height: 50%;
+    padding-top: 5rem;
+
+}
+
+.product-card-title {
+    font-size: var(--larger-font-size);
+    font-weight: var(--bolder-font-weight);
+    margin-left: 1rem;
+}
+
+.footer {
+    margin: 0rem 0 -2rem 2px;
+
+}
