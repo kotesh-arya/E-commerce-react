@@ -3,7 +3,9 @@ import { NavBar,Footer } from '../HomePage/HomePageComponents';
 import "../../Colours/colours.css";
 import "../ProductList/ProductList.css";
 import {products} from "../../backend/db/products"
+import { CartProductCard } from './CartProductCard';
 function ProductList() {
+   
 return (
 <div>
     <NavBar />
@@ -43,8 +45,8 @@ return (
                 <li className="rating-item"> <input type="radio" name="rating" id="one-star" /> <label htmlFor='one-star'>1 Star and above</label></li>
             </ul>
             <ul className="sorting-container">
-                <li className="sorting-item"> <input type="radio" name="sorting" id="" /> High to Low</li>
-                <li className="sorting-item"> <input type="radio" name="sorting" id="" /> Low to High</li>
+                <li className="sorting-item"> <input type="radio" name="sorting" id='increase' /> <label htmlFor='increase'>High to Low</label></li>
+                <li className="sorting-item"> <input type="radio" name="sorting" id='decrease' /> <label htmlFor='decrease'>Low to High</label></li>
             </ul>
         </div>
 
@@ -53,29 +55,7 @@ return (
             <div className="product-container">
                 {
                 products.map( product =>{
-                return <div key={product._id} className="card badge-card">
-                    <div className="image-icon-container">
-
-                        <img src="https://img.icons8.com/ios/50/000000/like--v1.png" className="stacked-icon"
-                            alt="heart-icon" srcset="" />
-
-                        <div className="product-image-container">
-                            <img className="product-image" src={product.imageSource} />
-                        </div>
-                    </div>
-
-                    <div className="product-card-content">
-                        <div className="product-card-title">
-                            {product.title}
-                        </div>
-                        <div className="card-content">
-                            Rs.{product.price} <strike>Rs.1299</strike> (62% OFF)
-                        </div>
-                        <footer className="footer">
-                            <a href="">MOVE TO CART</a>
-                        </footer>
-                    </div>
-                </div>
+                return <CartProductCard  key={product._id} title={product.title} id={product._id} imageSource={product.imageSource} listedPrice={product.listedPrice} sellingPrice={product.sellingPrice} />
                 })
                 }
             </div>
