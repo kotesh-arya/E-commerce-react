@@ -1,11 +1,8 @@
 .signup-container {
-    text-align: left;
     width: 25%;
     text-align: center;
     box-shadow: 2px 2px 10px var(--primary-color);
-    margin: auto;
-    margin-top: 10rem;
-    margin-bottom: 5.5rem;
+    margin: 10rem auto 5.5rem auto;
     padding: 3rem;
     font-size: var(--large-font-size);
 }

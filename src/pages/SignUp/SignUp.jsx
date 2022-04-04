@@ -6,7 +6,6 @@ function SignUp() {
 return (
 <div>
     <NavBar/>
-    {/* <h1>Blank SignUp page for Route checking</h1> */}
     <div className="signup-container">
         <h1 className="header-large">SIGN UP</h1>
         <div className="input">
