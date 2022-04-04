@@ -1,0 +1,70 @@
+.login-container {
+    text-align: left;
+    width: 25%;
+    text-align: center;
+    box-shadow: 2px 2px 10px var(--primary-color);
+    margin: auto;
+    margin-top: 10rem;
+    padding: 3rem;
+    margin-bottom: 4.1rem;
+    font-size: var(--large-font-size);
+}
+
+.header-large {
+    margin-bottom: 3rem;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: var(--larger-font-size);
+    margin-left: 2.5rem;
+}
+
+.input-box {
+    width: 90%;
+    margin-left: 0;
+}
+
+.handy-div {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.check-box {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.checkbox-text {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 10px 10px 10px 0;
+    width: 50%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.forgot-password {
+    text-decoration: none;
+    color: var(--blue);
+}
+
+.btn {
+    width: 90%;
+    margin: 1rem auto;
+}
+
+.home-page-link{
+    padding: 0.8rem 7rem;
+    text-decoration: none;
+    color: var(--white);
+}
+.signup-link{
+    text-decoration:none;
+    color: var(--black);
+}
