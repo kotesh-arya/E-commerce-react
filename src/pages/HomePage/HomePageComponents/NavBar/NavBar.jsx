@@ -22,7 +22,7 @@ return (
     </div>
     <nav className="main-links">
         <button className="btn-link">
-            <a className="link-button" href="#">LOG OUT</a>
+            <Link className="link-button" to="/SignIn">LOG OUT</Link>
         </button>
         <Link className='react-link' to="/WishList">
           <div className="badge">
