@@ -22,7 +22,6 @@ return (
                 <input className="check-box" type="checkbox"/>
                 <label className="check-label" htmlFor="check-box">Remember Me</label>
             </div>
-            {/* <a  href="">Forgot Password</a> */}
             <Link className="forgot-password" to="">Forgot Password</Link>
         </div>
         <button className="btn btn-primary"> 
