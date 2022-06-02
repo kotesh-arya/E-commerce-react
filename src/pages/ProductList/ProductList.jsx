@@ -1,11 +1,21 @@
-import React from 'react';
-import { NavBar,Footer } from '../HomePage/HomePageComponents';
+import React, {useState,useEffect} from 'react';
+import { NavBar } from '../HomePage/HomePageComponents';
 import "../../Colours/colours.css";
 import "../ProductList/ProductList.css";
-import {products} from "../../backend/db/products"
-import { CartProductCard } from './CartProductCard';
+import { ProductlistCard } from './ProductlistCard';
+import axios from 'axios'
 function ProductList() {
    
+    const [products, setProducts] = useState([]);
+const getProducts=async()=>{
+    const response = await axios.get('/api/products');
+    const data = response.data.products;
+    setProducts(data);
+}
+useEffect(()=>{
+   getProducts();
+},[])
+
 return (
 <div>
     <NavBar />
@@ -18,11 +28,10 @@ return (
             </div>
             <div className="price-slider">
                 <div className="slider-ranges">
-                    <h3>100</h3>
-                    <h3>200</h3>
                     <h3>500</h3>
-                    <h3>800</h3>
                     <h3>1000</h3>
+                    <h3>1500</h3>
+                    <h3>2000</h3>
                 </div>
                 <div className="slider-container">
                     <input type="range" min="1" max="1000" className="slider" />
@@ -55,13 +64,13 @@ return (
             <div className="product-container">
                 {
                 products.map( product =>{
-                return <CartProductCard  key={product._id} title={product.title} id={product._id} imageSource={product.imageSource} listedPrice={product.listedPrice} sellingPrice={product.sellingPrice} />
+                return <ProductlistCard  key={product._id} {...product} />
                 })
                 }
             </div>
         </div>
     </div>
-<Footer/>
+
 </div>
 )
 }

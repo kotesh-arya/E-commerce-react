@@ -7,15 +7,16 @@ import {
  * You can add cart items of your wish with different attributes
  * */
 
-export const cartItems = [{
+export const cartItems = [
+
+    {
         _id: uuid(),
-        cartItemTitle: "Sherlock's Hat",
-        imageSource: "https://daily-fashion.netlify.app/Components/Homepage/HomePage-assets/trending-image-sherlock-cap.jpg",
-        description: "Transform yourself into a detective look with this Sherlock's Hat.By the comfort you get in this winter, you can pull out your style with a lengthy coat.",
-       price: 500,
+        title: "BY BENYAR",
+        imageSource: "https://m.media-amazon.com/images/I/71MFZZWSvRL._AC_UL480_FMwebp_QL65_.jpg",
+        sellingPrice: 500,
+        listedPrice: 1000,
+        categoryName: "men",
+
     },
-   
-
-
 
 ];

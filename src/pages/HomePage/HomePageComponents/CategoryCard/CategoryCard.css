@@ -1,37 +1,51 @@
-.categories {
+.category-container {
+    margin-bottom: -8rem;
+}
+
+.section-heading {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    margin: 10rem 1rem 1rem 0rem;
 }
 
-.card-image {
-    width: 100%;
-    height: 18rem;
-    object-fit: cover;
-    object-position: bottom;
-}
-
-.card {
-    width: 20rem;
-    margin: 0 1rem;
+.underline {
+    height: 5px;
+    width: 14rem;
+    background-color: var(--grey);
 }
 
 .categories {
     display: flex;
     margin-top: 1rem;
-    padding: 3rem;
-    justify-content: center;
+    padding: 1rem;
+    justify-content: space-around;
+    align-items: flex-end;
+    width: 100%;
+    flex-flow: row wrap;
 }
 
-.card-title {
-    position: relative;
-    bottom: 10rem;
-    background-color: var(--primary-color);
+.card-image {
     width: 100%;
-    justify-content: center;
-    margin-left: 0;
+    height: 200px;
+    object-fit: cover;
+    object-position: bottom;
+    border-radius: 10px;
+}
+
+
+.category {
+    position: relative;
+    width: fit-content;
+    margin: 2rem 0;
+    border-radius: 10px;
+}
+
+.category-card-title {
+    position: absolute;
+    background-color: var();
+    width: 100%;
     padding: 8px;
-    margin-bottom: -5rem;
-    color: var(--white);
+    text-align: center;
+    color: var(--primary-color);
 }

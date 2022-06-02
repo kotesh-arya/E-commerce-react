@@ -4,11 +4,11 @@
 }
 
 .main-footer {
-    padding: 1rem;
-    background-color: var(--primary-color);
-    color: var(--white);
+    padding: 0.5rem;
+    background-color: var(--footer-bg-color);
+    color: var(--primary-color);
     font-weight: var(--medium-font-weight);
-     position: relative;
+    position: relative;
     bottom: 0;
     width: 100%;
 }
@@ -19,6 +19,9 @@
 }
 
 .footer-icon-link {
-    color: var(--white);
-    margin: 5rem 1rem;
+    color: var(--fa-primary-color);
+    margin: 1rem;
+}
+.main-footer-icon{
+    font-size: 2.1rem;
 }
