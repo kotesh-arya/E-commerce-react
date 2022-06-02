@@ -1,31 +1,54 @@
-import React from 'react'
-function CartProduct({imageSource,cartItemTitle,price}) {
-return (
-<div className="cart-card">
-
-    <img className="horizontal-card-image hat " src={imageSource} />
-    <div className="image-card-content-col">
-        <div className="card-content">
-            <div className=" cart-card-title">
-                {cartItemTitle}
-            </div>
-            <div className="card-content price">
-                <h2>Rs.{price} <strike><span className="light-text">Rs.200</span></strike> </h2>
-                <h3>(75% off)</h3>
-            </div>
-            <div className="quantity-setting">
-                <p>Quantity:</p>
-                <button className="btn-counter">-</button>
-                <input className="quantity-input" type="text" />
-                <button className="btn-counter">+</button>
-            </div>
-            <button className="btn btn-primary max-width-btn">Remove from cart</button>
-
-            <button className="btn outline-primary max-width-btn">Move to Wishlist</button>
+import React from "react";
+import "../../Colours/colours.css";
+import CartCSS from "../Cart/Cart.module.css";
+function CartProduct({ imageSource, title, listedPrice, sellingPrice }) {
+  const calculateDiscount = (initialPrice, sellingPrice) => {
+    return ((initialPrice - sellingPrice) / initialPrice) * 100;
+  };
+  return (
+    <div className="horizontal-card">
+      <div className="horizontal-card-image-container">
+        <img
+          className={`horizontal-card-image ${CartCSS["cart-product-image"]}`}
+          src={imageSource}
+        />
+      </div>
+      <div className="horizontal-card-content">
+        <div className=" cart-card-title">
+          <h2 className={`header-text ${CartCSS["cart-item-title"]}`}>
+            {title}
+          </h2>
         </div>
+        <div className={`card-content ${CartCSS["price"]}`}>
+          <h2>
+            Rs.{sellingPrice}{" "}
+            <strike>
+              <span className={CartCSS["light-text"]}>Rs.{listedPrice}</span>
+            </strike>{" "}
+          </h2>
+          <h3>
+            ({Math.round(calculateDiscount(listedPrice, sellingPrice))}% OFF)
+          </h3>
+        </div>
+        <div className={CartCSS["quantity-setting"]}>
+          <p>Quantity:</p>
+          <button className={CartCSS["btn-counter"]}>-</button>
+          <input className={CartCSS["quantity-input"]} type="text" />
+          <button className={CartCSS["btn-counter"]}>+</button>
+        </div>
+        <div className={CartCSS["cart-card-buttons"]}>
+          <button
+            className={`btn btn-primary ${CartCSS["cart-card-button"]} ${CartCSS["remove-btn"]}`}
+          >
+            Remove from cart
+          </button>
+          <button className={`btn btn-primary ${CartCSS["cart-card-button"]}`}>
+            Add to Wishlist
+          </button>
+        </div>
+      </div>
     </div>
-</div>
-)
+  );
 }
 
-export {CartProduct}
+export { CartProduct };

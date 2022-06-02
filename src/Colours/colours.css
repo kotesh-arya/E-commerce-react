@@ -1,6 +1,14 @@
 @import url('https://handy-ui.netlify.app/css/components.css');
 
 :root {
-    --primary-color:#022480;
     --alert-primary:red;
+    --primary-color:#43008C;
+    --blue:#0000FF;
+    --black:#000000;
+    --meduim-font-size:medium;
+    --grey:#808080;
+    --badge-bg-color:#FF0000;
+    --fa-primary-color:#5a5858;
+    --footer-bg-color:#EBECED;
+    --page-bg-color:#f3f3f3;
 }
