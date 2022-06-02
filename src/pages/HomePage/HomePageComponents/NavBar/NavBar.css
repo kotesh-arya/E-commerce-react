@@ -33,6 +33,7 @@
 .header-input {
   padding: 9px;
   width: 90%;
+  border-radius: 3rem;
   border-radius: 5px;
   border: 2px solid var(--grey);
   font-size: var(--medium-font-size);
