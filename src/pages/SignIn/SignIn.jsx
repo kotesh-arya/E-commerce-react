@@ -24,6 +24,7 @@ function SignIn() {
             placeholder="************"
           />
         </div>
+
         <div className={SignInCSS["handy-div"]}>
           <div className={SignInCSS["checkbox-text"]}>
             <input className={SignInCSS["check-box"]} type="checkbox" />
@@ -34,6 +35,9 @@ function SignIn() {
           <a className={SignInCSS["forgot-password"]} href="#">
             Forgot Password
           </a>
+
+      
+
         </div>
         <Link className={SignInCSS["home-page-link"]} to="/">
           <button className={`btn btn-primary ${SignInCSS["login-btn"]}`}>
