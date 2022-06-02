@@ -35,7 +35,7 @@ const NavBar = () => {
       </div>
 
       <nav className="main-links">
-        {/* <Link className="nav-icon-link" to="/WishList">
+        <Link className="nav-icon-link" to="/WishList">
           <div className="nav-badge">
             <i
               className="fa fa-heart fa-2x header-icon "
@@ -43,9 +43,9 @@ const NavBar = () => {
             ></i>
             <div className="number-one">3</div>
           </div>
-        </Link> */}
+        </Link>
 
-        {/* <Link className="nav-icon-link" to="/Cart">
+        <Link className="nav-icon-link" to="/Cart">
           <div className="nav-badge">
             <i
               className="fa fa-shopping-cart fa-2x header-icon "
@@ -53,45 +53,11 @@ const NavBar = () => {
             ></i>
             <div className="number-one">1</div>
           </div>
-        </Link> */}
+        </Link>
 
-        {/* <Link className="nav-icon-link" to="/SignIn">
+        <Link className="nav-icon-link" to="/SignIn">
           <i className="fa fa-user fa-2x header-icon" aria-hidden="true"></i>
-        </Link> */}
-
-        <ul id="menu-list">
-          <li>
-            <Link className="nav-icon-link" to="/WishList">
-              <div className="nav-badge">
-                <i
-                  className="fa fa-heart fa-2x header-icon "
-                  aria-hidden="true"
-                ></i>
-                <div className="number-one">3</div>
-              </div>
-            </Link>
-          </li>
-          <li>
-            <Link className="nav-icon-link" to="/Cart">
-              <div className="nav-badge">
-                <i
-                  className="fa fa-shopping-cart fa-2x header-icon "
-                  aria-hidden="true"
-                ></i>
-                <div className="number-one">1</div>
-              </div>
-            </Link>
-          </li>
-          <li>
-            <Link className="nav-icon-link" to="/SignIn">
-              <i
-                className="fa fa-user fa-2x header-icon"
-                aria-hidden="true"
-              ></i>
-            </Link>
-          </li>
-          {/* <li></li> */}
-        </ul>
+        </Link>
       </nav>
     </div>
   );
