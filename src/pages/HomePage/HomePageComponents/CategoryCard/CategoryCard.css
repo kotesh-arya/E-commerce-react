@@ -1,5 +1,6 @@
 .category-container {
     margin-bottom: -8rem;
+
 }
 
 .section-heading {
@@ -35,17 +36,20 @@
 
 
 .category {
-    position: relative;
     width: fit-content;
     margin: 2rem 0;
     border-radius: 10px;
 }
 
 .category-card-title {
-    position: absolute;
-    background-color: var();
+    text-decoration: none;
     width: 100%;
     padding: 8px;
     text-align: center;
     color: var(--primary-color);
 }
+
+.category-title-link{
+    text-decoration: none;
+}
+

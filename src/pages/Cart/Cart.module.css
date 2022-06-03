@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 3rem;
+    margin: 4rem  3rem 0 3rem;
     padding: 1rem 0 6.5rem 0;
 }
 
@@ -42,7 +42,7 @@ body {
     margin: 2rem 2rem 2rem 2rem;
     padding: 2rem 0 1rem 0;
     border-radius: 3px;
-    box-shadow: 2px 2px 8px var(--grey);
+    box-shadow: none;
     border-radius: 10px;
 
 }

@@ -3,17 +3,18 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
-import {BrowserRouter} from "react-router-dom"
-
+import { BrowserRouter } from "react-router-dom";
+import { FilterProvider } from "./contexts/filtersContext";
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-    <App />
+        <FilterProvider>
+          <App />
+        </FilterProvider>
     </BrowserRouter>
-    
   </React.StrictMode>,
   document.getElementById("root")
 );

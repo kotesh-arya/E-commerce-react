@@ -4,4 +4,8 @@
 
  .banner-container{
      margin-bottom: -6rem;
+     position: relative;
+     top: 2.6rem;
+     z-index: 1;
+     width: 100%;
  }

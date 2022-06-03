@@ -40,12 +40,10 @@
     text-align: justify;
 }
 
-
 .trending {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
-    padding: 9rem;
     padding: 2rem 5rem 4rem 5rem;
 }
 

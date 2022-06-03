@@ -4,10 +4,13 @@
     text-align: center;
     box-shadow: 3px 3px 8px var(--grey);
     margin: auto;
-    margin-top: 6rem;
+    margin-top: 10rem;
     padding: 1.5rem;
     font-size: var(--large-font-size);
     border-radius: 10px;
+    position: relative;
+    z-index: 5;
+    background-color: var(--white);
 }
 
 .header-large {
@@ -24,6 +27,7 @@
 .text-field{
     width: 90%;
     margin-left: 0;
+    background-color: var(--page-bg-color);
  }
 
 

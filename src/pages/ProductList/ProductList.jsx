@@ -1,78 +1,70 @@
-import React, {useState,useEffect} from 'react';
-import { NavBar } from '../HomePage/HomePageComponents';
+import React, { useState, useEffect } from "react";
+import { NavBar } from "../HomePage/HomePageComponents";
+import Filters from "./filters/filters";
 import "../../Colours/colours.css";
 import "../ProductList/ProductList.css";
-import { ProductlistCard } from './ProductlistCard';
-import axios from 'axios'
+import { ProductsFilterContext } from "../../contexts/filtersContext";
+import { ProductlistCard } from "./ProductlistCard";
+import axios from "axios";
+import {
+  setRating,
+  toggleMenCategory,
+  toggleWomenCategory,
+  toggleDelivery,
+  toggleStockAvailability,
+  sortProducts,
+} from "../ProductList/filters/filterOperations";
+
 function ProductList() {
-   
-    const [products, setProducts] = useState([]);
-const getProducts=async()=>{
-    const response = await axios.get('/api/products');
-    const data = response.data.products;
-    setProducts(data);
-}
-useEffect(()=>{
-   getProducts();
-},[])
+  const [products, setProducts] = useState([]);
+  const fetchProducts = async () => {
+    const response = await axios.get("/api/products");
+    const products = response.data.products;
+    setProducts(products);
+  };
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
-return (
-<div>
-    <NavBar />
-    <div className="product-filter-container">
+  const { state } = ProductsFilterContext();
+  const {
+    minRating,
+    menChecked,
+    womenChecked,
+    deliveryChecked,
+    stockChecked,
+    sortBy,
+  } = state;
 
-        <div className="filter-section-col">
-            <div className="filter-header">
-                <h2>Filters</h2>
-                <h4>Clear</h4>
-            </div>
-            <div className="price-slider">
-                <div className="slider-ranges">
-                    <h3>500</h3>
-                    <h3>1000</h3>
-                    <h3>1500</h3>
-                    <h3>2000</h3>
-                </div>
-                <div className="slider-container">
-                    <input type="range" min="1" max="1000" className="slider" />
-                </div>
-            </div>
-            <div className="category-container-col">
-                <div className="category-one">
-                    <input id='category-check-men' className="category-check" type="checkbox" />
-                    <label htmlFor='category-check-men'>Men's Fashion</label>
-                </div>
-                <div className="category-two">
-                    <input id='category-check-women' className="category-check" type="checkbox" />
-                    <label  htmlFor='category-check-women'>Women's Fashion</label>
-                </div>
-            </div>
-            <ul className="rating-container">
-                <li className="rating-item"> <input type="radio" name="rating" id="four-star" /> <label htmlFor='four-star'>4 Star and above</label></li>
-                <li className="rating-item"> <input type="radio" name="rating" id="three-star" /> <label htmlFor='three-star'>3 Star and above</label></li>
-                <li className="rating-item"> <input type="radio" name="rating" id="two-star" /> <label htmlFor='two-star'>2 Star and above</label></li>
-                <li className="rating-item"> <input type="radio" name="rating" id="one-star" /> <label htmlFor='one-star'>1 Star and above</label></li>
-            </ul>
-            <ul className="sorting-container">
-                <li className="sorting-item"> <input type="radio" name="sorting" id='increase' /> <label htmlFor='increase'>High to Low</label></li>
-                <li className="sorting-item"> <input type="radio" name="sorting" id='decrease' /> <label htmlFor='decrease'>Low to High</label></li>
-            </ul>
-        </div>
+  const ratingFiltered = setRating(products, minRating);
+  const menFiltered = toggleMenCategory(ratingFiltered, menChecked);
+  const womenFiltered = toggleWomenCategory(menFiltered, womenChecked);
+  const deliveryFilteredProducts = toggleDelivery(
+    womenFiltered,
+    deliveryChecked
+  );
+  const sortedProducts = sortProducts(deliveryFilteredProducts, sortBy);
+  const finalFilteredProducts = toggleStockAvailability(
+    sortedProducts,
+    stockChecked
+  );
 
+  return (
+    <div>
+      <NavBar />
+      <div className="wrapper">
+        <Filters />
         <div className="product-section">
-            <h1 className="header-large product-header">Showing All Products</h1>
-            <div className="product-container">
-                {
-                products.map( product =>{
-                return <ProductlistCard  key={product._id} {...product} />
-                })
-                }
-            </div>
+          <h1 className="header-large product-header">Showing All Products</h1>
+          <div className="product-container">
+            {finalFilteredProducts.map((product) => {
+              return <ProductlistCard key={product._id} {...product} />;
+            })}
+          </div>
         </div>
+      </div>
     </div>
-
-</div>
-)
+  );
 }
 
-export {ProductList}
+export { ProductList };
