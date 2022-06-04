@@ -1,7 +1,11 @@
- .banner-image {
-     width: 100%;
- }
+.banner-image {
+  width: 100%;
+}
 
- .banner-container{
-     margin-bottom: -6rem;
- }
+.banner-container {
+  margin: 0 0 -6rem 0;
+  position: relative;
+  top: 2.6rem;
+  z-index: 1;
+  width: 100%;
+}

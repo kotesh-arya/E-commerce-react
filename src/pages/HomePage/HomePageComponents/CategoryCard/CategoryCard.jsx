@@ -13,7 +13,7 @@ const CategoryCard = () => {
       <div className="categories">
         {categories.map((category) => {
           return (
-            <Link key={category._id} to="/ProductList">
+            <Link className="category-title-link" key={category._id} to="/ProductList">
               <div className="category">
                 <div className="category-image-container">
                   <img
