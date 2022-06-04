@@ -8,10 +8,16 @@ export const reducer = (state, action) => {
       menChecked: false,
       womenChecked: false,
       deliveryChecked: false,
+      stockChecked: false,
       sortBy: null,
       minRating: 1
     };
   }
+  // if(state.menChecked && state.womenChecked){
+  //   return {
+
+  //   }
+  // }
   if (action.type === "RATING") {
     return {
       ...state,

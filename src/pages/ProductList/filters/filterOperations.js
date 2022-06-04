@@ -1,14 +1,51 @@
+// //Rating slider
 
-export const toggleMenCategory = (products, menChecked) => {
-  return products.filter((item) =>
-    menChecked ? item.categoryName === "men" : item
-  );
+export const setRating = (products, rating) => {
+  return products.filter((item) => item.rating >= rating);
 };
 
-export const toggleWomenCategory = (products, womenChecked) => {
-  return products.filter((item) =>
-    womenChecked ? item.categoryName === "women" : item
-  );
+export const toggleMenCategory = (products, womenChecked, menChecked) => {
+  if (womenChecked) {
+    // return products.filter((item) => {
+    //   menChecked ? item : womenFiltered;
+    // });
+    if (menChecked) {
+      return products;
+    } else {
+      return products.filter((item) => item.categoryName === "women");
+    }
+  } else {
+    return products.filter((item) =>
+      menChecked ? item.categoryName === "men" : item
+    );
+  }
+};
+
+export const toggleWomenCategory = (products, menChecked, womenChecked) => {
+  if (menChecked) {
+    // return products.filter((item) => {
+    //   womenChecked ? item : menFiltered;
+    // });
+    if (womenChecked) {
+      return products;
+    } else {
+      return products.filter((item) => item.categoryName === "men");
+    }
+  } else {
+    return products.filter((item) =>
+      womenChecked ? item.categoryName === "women" : item
+    );
+  }
+
+  // {
+  //   if (womenChecked && menChecked) {
+  //     return products;
+  //   } else if (womenChecked) {
+  //     return item.categoryName === "women";
+  //   } else {
+  //     return item;
+  //   }
+  // }
 };
 
 export const toggleDelivery = (products, deliveryChecked) => {
@@ -21,12 +58,6 @@ export const toggleStockAvailability = (products, stockChecked) => {
   return products.filter((item) =>
     stockChecked ? item.inStock === true : item
   );
-};
-
-// //Rating slider
-
-export const setRating = (products, rating) => {
-  return products.filter((item) => item.rating >= rating);
 };
 
 // //Price Sorting

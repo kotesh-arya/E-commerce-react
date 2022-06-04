@@ -1,55 +1,52 @@
 .category-container {
-    margin-bottom: -8rem;
-
+  margin: 0 0 -8rem 0;
 }
 
 .section-heading {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10rem 1rem 1rem 0rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10rem 1rem 1rem 0rem;
 }
 
 .underline {
-    height: 5px;
-    width: 14rem;
-    background-color: var(--grey);
+  height: 5px;
+  width: 14rem;
+  background-color: var(--grey);
 }
 
 .categories {
-    display: flex;
-    margin-top: 1rem;
-    padding: 1rem;
-    justify-content: space-around;
-    align-items: flex-end;
-    width: 100%;
-    flex-flow: row wrap;
+  display: flex;
+  margin: 1rem 0 0 0 ;
+  padding: 1rem;
+  justify-content: space-around;
+  align-items: flex-end;
+  width: 100%;
+  flex-flow: row wrap;
 }
 
 .card-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    object-position: bottom;
-    border-radius: 10px;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: bottom;
+  border-radius: 10px;
 }
 
-
 .category {
-    width: fit-content;
-    margin: 2rem 0;
-    border-radius: 10px;
+  width: fit-content;
+  margin: 2rem 0;
+  border-radius: 10px;
 }
 
 .category-card-title {
-    text-decoration: none;
-    width: 100%;
-    padding: 8px;
-    text-align: center;
-    color: var(--primary-color);
+  text-decoration: none;
+  width: 100%;
+  padding: 8px;
+  text-align: center;
+  color: var(--primary-color);
 }
 
-.category-title-link{
-    text-decoration: none;
+.category-title-link {
+  text-decoration: none;
 }
-

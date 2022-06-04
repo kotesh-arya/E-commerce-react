@@ -52,7 +52,7 @@ export const products = [
     rating: 4,
     categoryName: "women",
     freeDelivery: true,
-    inStock: false
+    inStock: true
   },
   {
     _id: uuid(),

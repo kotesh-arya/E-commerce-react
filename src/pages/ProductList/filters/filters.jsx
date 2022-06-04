@@ -140,7 +140,6 @@ const Filters = () => {
                 checked={sortBy && sortBy === "HIGH_TO_LOW"}
                 onChange={() => {
                   dispatch({ type: "SORT", payload: "HIGH_TO_LOW" });
-                  // console.log("decrease");
                 }}
               />{" "}
               <label htmlFor="increase">High to Low</label>
@@ -153,7 +152,6 @@ const Filters = () => {
                 checked={sortBy && sortBy === "LOW_TO_HIGH"}
                 onChange={() => {
                   dispatch({ type: "SORT", payload: "LOW_TO_HIGH" });
-                  // console.log("increase");
                 }}
               />{" "}
               <label htmlFor="decrease">Low to High</label>

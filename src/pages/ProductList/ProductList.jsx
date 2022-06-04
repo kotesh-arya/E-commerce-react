@@ -5,6 +5,7 @@ import "../../Colours/colours.css";
 import "../ProductList/ProductList.css";
 import { ProductsFilterContext } from "../../contexts/filtersContext";
 import { ProductlistCard } from "./ProductlistCard";
+import { OutOfStockCard } from "./OutOfStockCard";
 import axios from "axios";
 import {
   setRating,
@@ -37,8 +38,16 @@ function ProductList() {
   } = state;
 
   const ratingFiltered = setRating(products, minRating);
-  const menFiltered = toggleMenCategory(ratingFiltered, menChecked);
-  const womenFiltered = toggleWomenCategory(menFiltered, womenChecked);
+  const menFiltered = toggleMenCategory(
+    ratingFiltered,
+    womenChecked,
+    menChecked
+  );
+  const womenFiltered = toggleWomenCategory(
+    ratingFiltered,
+    menChecked,
+    womenChecked
+  );
   const deliveryFilteredProducts = toggleDelivery(
     womenFiltered,
     deliveryChecked
@@ -58,7 +67,11 @@ function ProductList() {
           <h1 className="header-large product-header">Showing All Products</h1>
           <div className="product-container">
             {finalFilteredProducts.map((product) => {
-              return <ProductlistCard key={product._id} {...product} />;
+              if (product.inStock) {
+                return <ProductlistCard key={product._id} {...product} />;
+              } else {
+                return <OutOfStockCard key={product._id} {...product} />;
+              }
             })}
           </div>
         </div>
