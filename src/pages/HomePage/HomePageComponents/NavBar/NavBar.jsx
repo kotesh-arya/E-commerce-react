@@ -2,8 +2,11 @@ import React from "react";
 import "../../../../Colours/colours.css";
 import "../NavBar/NavBar.css";
 import { Link } from "react-router-dom";
-
+import { GlobalCartContext } from "../../../../contexts/cartContext";
+import { GlobalWishlistContext } from "../../../../contexts/wishlistContext";
 const NavBar = () => {
+  const { amount } = GlobalCartContext();
+  const { wishlist } = GlobalWishlistContext();
   return (
     <div className="navigation-container">
       <div className="nav-header">
@@ -41,7 +44,7 @@ const NavBar = () => {
               className="fa fa-heart fa-2x header-icon "
               aria-hidden="true"
             ></i>
-            <div className="number-one">3</div>
+            <div className="number-one">{wishlist.length}</div>
           </div>
         </Link>
 
@@ -51,7 +54,7 @@ const NavBar = () => {
               className="fa fa-shopping-cart fa-2x header-icon "
               aria-hidden="true"
             ></i>
-            <div className="number-one">1</div>
+            <div className="number-one">{amount}</div>
           </div>
         </Link>
 

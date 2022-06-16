@@ -1,14 +1,20 @@
 import React from "react";
+import { GlobalCartContext } from "../../contexts/cartContext";
+import { GlobalWishlistContext } from "../../contexts/wishlistContext";
 
 function WishlistProductCard({
   title,
   imageSource,
   listedPrice,
   sellingPrice,
+  id,
+  amount,
 }) {
   const calculateDiscount = (initialPrice, sellingPrice) => {
     return ((initialPrice - sellingPrice) / initialPrice) * 100;
   };
+  const { removeFromWishlist } = GlobalWishlistContext();
+  const { dispatch, cart } = GlobalCartContext();
   return (
     <div className="card badge-card">
       <div className="card-image-container">
@@ -27,10 +33,38 @@ function WishlistProductCard({
         </span>
       </div>
       <div className="wishlist-card-footer">
-        <button className="btn btn-link wishlist-card-button">
+        <button
+          onClick={() => {
+            if (cart.some((item) => item.id === id)) {
+              removeFromWishlist(id);
+              dispatch({ type: "PRE_EXISTED_ITEM", payload: title });
+            } else {
+              removeFromWishlist(id);
+              dispatch({
+                type: "MOVE_TO_CART",
+                item: {
+                  id: id,
+                  title: title,
+                  imageSource: imageSource,
+                  listedPrice: listedPrice,
+                  sellingPrice: sellingPrice,
+                  amount: amount,
+                },
+              });
+            }
+          }}
+          className="btn btn-link wishlist-card-button"
+        >
           MOVE TO CART
         </button>
-        <button className="btn btn-link wishlist-card-button">REMOVE</button>
+        <button
+          onClick={() => {
+            removeFromWishlist(id);
+          }}
+          className="btn btn-link wishlist-card-button"
+        >
+          REMOVE
+        </button>
       </div>
     </div>
   );

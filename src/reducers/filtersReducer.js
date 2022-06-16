@@ -13,11 +13,6 @@ export const reducer = (state, action) => {
       minRating: 1
     };
   }
-  // if(state.menChecked && state.womenChecked){
-  //   return {
-
-  //   }
-  // }
   if (action.type === "RATING") {
     return {
       ...state,

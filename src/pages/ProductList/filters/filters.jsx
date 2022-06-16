@@ -57,12 +57,18 @@ const Filters = () => {
                   ⭐
                 </span>
               </h3>
+              <h3>
+                5
+                <span aria-label="rating" role="img">
+                  ⭐
+                </span>
+              </h3>
             </div>
             <div className="slider-container">
               <input
                 type="range"
                 min="1"
-                max="4"
+                max="5"
                 value={minRating}
                 className="slider"
                 onChange={(e) => {
@@ -102,6 +108,9 @@ const Filters = () => {
               />
               <label htmlFor="category-check-women">Women's Fashion</label>
             </div>
+          </div>
+          <div className="delivery-container">
+            <h4>Delivery Type</h4>
             <div className="category-three">
               <input
                 id="category-check-delivery"
@@ -115,6 +124,10 @@ const Filters = () => {
               />
               <label htmlFor="category-check-delivery">Fast Delivery</label>
             </div>
+          </div>
+          <div className="availability-container">
+            <h4>Availability</h4>
+
             <div className="category-four">
               <input
                 id="category-stock-delivery"
