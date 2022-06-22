@@ -16,7 +16,7 @@ export const categories = [
     _id: uuid(),
     categoryName: "GLASSES",
     imageSource:
-      "https://thumbs.dreamstime.com/b/black-stylish-men-s-sunglasses-isolate-white-background-pair-summer-dark-glasses-isolated-169446844.jpg",
+      "https://fashiondiiary.com/wp-content/uploads/2020/12/18-muzhskie-solncezashchitnye-ochki-foto-620x402.jpg",
   },
   {
     _id: uuid(),

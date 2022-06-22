@@ -1,6 +1,7 @@
 import React from "react";
 import "../../../../Colours/colours.css";
 import "../NavBar/NavBar.css";
+import { FaSearch } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 import { GlobalCartContext } from "../../../../contexts/cartContext";
 import { GlobalWishlistContext } from "../../../../contexts/wishlistContext";
@@ -31,10 +32,8 @@ const NavBar = () => {
           placeholder="Type here..."
           type="search"
         />
-        <img
-          className=" input-icon"
-          src="https://img.icons8.com/material/28/000000/search--v1.png"
-        />
+<FaSearch className="input-icon"/>
+        <i className="fa-solid fa-magnifying-glass input-icon"></i>
       </div>
 
       <nav className="main-links">

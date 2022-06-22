@@ -1,6 +1,7 @@
 import React from "react";
 import "../../Colours/colours.css";
 import CartCSS from "../Cart/Cart.module.css";
+import { IoMdArrowDropupCircle, IoMdArrowDropdownCircle } from "react-icons/io";
 import { GlobalCartContext } from "../../contexts/cartContext";
 function CartProduct({
   imageSource,
@@ -13,7 +14,7 @@ function CartProduct({
   const calculateDiscount = (initialPrice, sellingPrice) => {
     return ((initialPrice - sellingPrice) / initialPrice) * 100;
   };
-  const { remove, increase,decrease } = GlobalCartContext();
+  const { remove, increase, decrease } = GlobalCartContext();
 
   return (
     <div className="horizontal-card">
@@ -42,20 +43,19 @@ function CartProduct({
           </h3>
         </div>
         <div className={CartCSS["quantity-setting"]}>
-          <p>Quantity:</p>
-          <button
+          <span><strong>Quantity:</strong></span>
+          <div className={CartCSS["quantity-group"]} >
+          <IoMdArrowDropdownCircle
             className={CartCSS["btn-counter"]}
             onClick={() => decrease(id)}
-          >
-            -
-          </button>
-          <h3>{amount}</h3>
-          <button
+          />
+          <span><strong>{amount}</strong></span>
+
+          <IoMdArrowDropupCircle
             className={CartCSS["btn-counter"]}
             onClick={() => increase(id)}
-          >
-            +
-          </button>
+          />
+          </div>
         </div>
         <div className={CartCSS["cart-card-buttons"]}>
           <button
