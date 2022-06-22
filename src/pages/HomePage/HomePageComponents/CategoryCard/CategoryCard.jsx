@@ -18,7 +18,7 @@ const CategoryCard = () => {
                 <div className="category-image-container">
                   <img
                     src={category.imageSource}
-                    alt="watch"
+                    alt="category-item"
                     className="card-image"
                   />
                 </div>

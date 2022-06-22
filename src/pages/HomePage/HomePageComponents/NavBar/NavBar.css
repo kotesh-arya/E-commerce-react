@@ -32,6 +32,8 @@
   position: relative;
   right: 3rem;
   padding: 5px;
+  font-size: 1.8rem;
+  color: var(--fa-primary-color);
 }
 
 .header-input {
