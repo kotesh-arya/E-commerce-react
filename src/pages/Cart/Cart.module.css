@@ -101,9 +101,10 @@ body {
     border-radius: 50%;
     border: 1px solid var(--grey);
     width: 1rem;
+    cursor: pointer;
 }
 
-
+    
 
 .quantity-input {
     width: 2rem;
@@ -129,4 +130,7 @@ body {
     cursor: pointer;
     width: 50%;
     margin: 10px 10px;
+}
+.empty-cart-image{
+    width: 25rem;
 }

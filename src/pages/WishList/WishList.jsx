@@ -1,19 +1,38 @@
 import React from "react";
+import { Modal } from "../Modal";
 import { NavBar } from "../HomePage/HomePageComponents/NavBar/NavBar";
-import { wishlistItems } from "../../backend/db/wishlist-items";
 import "../WishList/Wishlist.css";
 import { WishlistProductCard } from "../WishList/WishlistProductCard";
+import { GlobalWishlistContext } from "../../contexts/wishlistContext";
+import { GlobalCartContext } from "../../contexts/cartContext";
+import EmptyWishlistImage from "../WishList/empty-wishlist.png";
 function WishList() {
+  const { wishlist } = GlobalWishlistContext();
+  const { isModalOpen, dispatch } = GlobalCartContext();
+  console.log(wishlist);
+  setTimeout(() => {
+    dispatch({ type: "REMOVE_MODAL" });
+  }, 5000);
   return (
     <div>
       <NavBar />
+      {isModalOpen && <Modal />}
       <div className="wishlist-container">
-        <h1 className="header-large wishlist-heading">My Wishlist</h1>
-        <div className="wishlist-items-row">
-          {wishlistItems.map((item) => {
-            return <WishlistProductCard key={item._id} {...item} />;
-          })}
-        </div>
+        {wishlist.length === 0 ? (
+          <div>
+            <h2> WISHLIST IS EMPTY, PLEASE ADD ITEMS OF YOUR WISH 😎</h2>
+            <img className="wishlist-image" src={EmptyWishlistImage} alt="" />
+          </div>
+        ) : (
+          <div>
+            <h1 className="header-large wishlist-heading"> Wishlist</h1>
+            <div className="wishlist-items-row">
+              {wishlist.map((item) => {
+                return <WishlistProductCard key={item.id} {...item} />;
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

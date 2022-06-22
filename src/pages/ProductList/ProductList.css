@@ -30,7 +30,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1.5rem;
   margin: 0 1rem 0 0;
 }
 
@@ -52,13 +52,15 @@
 
 .category-container-col,
 .rating-container,
-.sorting-container {
+.sorting-container,
+.delivery-container,
+.availability-container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0.5rem 1rem;
-  margin: 0 0 1rem 1rem;
+  padding: 0.5rem 1rem 0 1rem;
+  margin: 0 0 0 1rem;
   font-size: 1.5rem;
 }
 
@@ -72,7 +74,7 @@
 .category-check {
   height: 15px;
   width: 15px;
-  margin:  0 10px 0 0 ;
+  margin: 0 10px 0 0;
 }
 
 .rating-item {
@@ -119,7 +121,7 @@
 .badge-card {
   width: 20rem;
 }
-.text-overlay-card{
+.text-overlay-card {
   width: 20rem;
 }
 
@@ -132,6 +134,13 @@
 .label-icon {
   justify-content: space-between;
   align-items: center;
+}
+.heart-icon {
+  cursor: pointer;
+}
+.liked-heart {
+  color: red;
+  cursor: pointer;
 }
 
 .card-image-container {
@@ -170,7 +179,9 @@
   padding: 10px;
   border-radius: 5px;
 }
-
+.outline-primary {
+  cursor: pointer;
+}
 .card-button-link {
   text-decoration: none;
   color: var(--white);

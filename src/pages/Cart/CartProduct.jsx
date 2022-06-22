@@ -1,10 +1,20 @@
 import React from "react";
 import "../../Colours/colours.css";
 import CartCSS from "../Cart/Cart.module.css";
-function CartProduct({ imageSource, title, listedPrice, sellingPrice }) {
+import { GlobalCartContext } from "../../contexts/cartContext";
+function CartProduct({
+  imageSource,
+  title,
+  listedPrice,
+  sellingPrice,
+  id,
+  amount,
+}) {
   const calculateDiscount = (initialPrice, sellingPrice) => {
     return ((initialPrice - sellingPrice) / initialPrice) * 100;
   };
+  const { remove, increase,decrease } = GlobalCartContext();
+
   return (
     <div className="horizontal-card">
       <div className="horizontal-card-image-container">
@@ -19,6 +29,7 @@ function CartProduct({ imageSource, title, listedPrice, sellingPrice }) {
             {title}
           </h2>
         </div>
+
         <div className={`card-content ${CartCSS["price"]}`}>
           <h2>
             Rs.{sellingPrice}{" "}
@@ -32,13 +43,24 @@ function CartProduct({ imageSource, title, listedPrice, sellingPrice }) {
         </div>
         <div className={CartCSS["quantity-setting"]}>
           <p>Quantity:</p>
-          <button className={CartCSS["btn-counter"]}>-</button>
-          <input className={CartCSS["quantity-input"]} type="text" />
-          <button className={CartCSS["btn-counter"]}>+</button>
+          <button
+            className={CartCSS["btn-counter"]}
+            onClick={() => decrease(id)}
+          >
+            -
+          </button>
+          <h3>{amount}</h3>
+          <button
+            className={CartCSS["btn-counter"]}
+            onClick={() => increase(id)}
+          >
+            +
+          </button>
         </div>
         <div className={CartCSS["cart-card-buttons"]}>
           <button
             className={`btn btn-primary ${CartCSS["cart-card-button"]} ${CartCSS["remove-btn"]}`}
+            onClick={() => remove(id)}
           >
             Remove from cart
           </button>

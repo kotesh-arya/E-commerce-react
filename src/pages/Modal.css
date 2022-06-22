@@ -1,0 +1,14 @@
+.modal-container {
+  height: fit-content;
+  width: 20rem;
+  margin-left: 40%;
+  background: var(--white);
+  color: var(--primary-color);
+  position: absolute;
+  bottom: 2rem;
+  border-radius: 5px;
+ 
+}
+.modal-container h4 {
+  margin: 1rem;
+}

@@ -13,11 +13,13 @@ export const products = [
     title: "TIMEX SPORT",
     sellingPrice: 500,
     listedPrice: 1000,
-    rating: 3,
+    rating: 5,
     categoryName: "men",
     freeDelivery: true,
-    inStock: true
+    inStock: true,
+    amount: 1,
   },
+
   {
     _id: uuid(),
     imageSource:
@@ -28,8 +30,10 @@ export const products = [
     rating: 3,
     categoryName: "women",
     freeDelivery: false,
-    inStock: true
+    inStock: true,
+    amount: 1,
   },
+
   {
     _id: uuid(),
     imageSource:
@@ -40,8 +44,10 @@ export const products = [
     rating: 3,
     categoryName: "men",
     freeDelivery: false,
-    inStock: false
+    inStock: false,
+    amount: 1,
   },
+
   {
     _id: uuid(),
     imageSource:
@@ -52,8 +58,10 @@ export const products = [
     rating: 4,
     categoryName: "women",
     freeDelivery: true,
-    inStock: true
+    inStock: true,
+    amount: 1,
   },
+
   {
     _id: uuid(),
     imageSource:
@@ -64,8 +72,10 @@ export const products = [
     rating: 4,
     categoryName: "men",
     freeDelivery: false,
-    inStock: false
+    inStock: false,
+    amount: 1,
   },
+
   {
     _id: uuid(),
     imageSource:
@@ -76,8 +86,10 @@ export const products = [
     rating: 4,
     categoryName: "women",
     freeDelivery: false,
-    inStock: false
+    inStock: false,
+    amount: 1,
   },
+
   {
     _id: uuid(),
     imageSource:
@@ -88,8 +100,11 @@ export const products = [
     rating: 2,
     categoryName: "men",
     freeDelivery: true,
-    inStock: true
+    inStock: true,
+    amount: 1,
   },
+
+  //////////////////////////////
   {
     _id: uuid(),
     imageSource:
@@ -97,11 +112,13 @@ export const products = [
     title: "TIMEX MONA",
     sellingPrice: 2000,
     listedPrice: 3500,
-    rating: 2,
+    rating: 5,
     categoryName: "women",
     freeDelivery: true,
-    inStock: false
+    inStock: false,
+    amount: 1,
   },
+
   {
     _id: uuid(),
     imageSource:
@@ -109,11 +126,13 @@ export const products = [
     title: "TIMEX SPORT",
     sellingPrice: 500,
     listedPrice: 1000,
-    rating: 2,
+    rating: 5,
     categoryName: "men",
     freeDelivery: true,
-    inStock: false
+    inStock: false,
+    amount: 1,
   },
+
   {
     _id: uuid(),
     imageSource:
@@ -121,11 +140,13 @@ export const products = [
     title: "OLEVS",
     sellingPrice: 1000,
     listedPrice: 2000,
-    rating: 1,
+    rating: 5,
     categoryName: "women",
     freeDelivery: true,
-    inStock: true
+    inStock: true,
+    amount: 1,
   },
+
   {
     _id: uuid(),
     imageSource:
@@ -136,8 +157,10 @@ export const products = [
     rating: 1,
     categoryName: "men",
     freeDelivery: true,
-    inStock: true
+    inStock: true,
+    amount: 1,
   },
+
   {
     _id: uuid(),
     imageSource:
@@ -148,6 +171,7 @@ export const products = [
     rating: 1,
     categoryName: "women",
     freeDelivery: false,
-    inStock: true
-  }
+    inStock: true,
+    amount: 1,
+  },
 ];
