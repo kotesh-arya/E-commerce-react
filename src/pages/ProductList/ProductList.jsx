@@ -29,7 +29,7 @@ function ProductList() {
   }, []);
 
   const { state } = ProductsFilterContext();
- 
+
   const {
     minRating,
     menChecked,
@@ -64,11 +64,10 @@ function ProductList() {
     <div>
       <NavBar />
       <div className="wrapper">
-        
         <Filters />
         <div className="product-section">
           <h1 className="header-large product-header">Showing All Products</h1>
-          
+
           <div className="product-container">
             {finalFilteredProducts.map((product) => {
               if (product.inStock) {

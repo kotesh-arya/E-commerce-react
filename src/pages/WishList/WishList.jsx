@@ -9,14 +9,12 @@ import EmptyWishlistImage from "../WishList/empty-wishlist.png";
 function WishList() {
   const { wishlist } = GlobalWishlistContext();
   const { isModalOpen, dispatch } = GlobalCartContext();
-  console.log(wishlist);
   setTimeout(() => {
     dispatch({ type: "REMOVE_MODAL" });
-  }, 5000);
+  }, 6000);
   return (
     <div>
       <NavBar />
-      {isModalOpen && <Modal />}
       <div className="wishlist-container">
         {wishlist.length === 0 ? (
           <div>
@@ -34,6 +32,7 @@ function WishList() {
           </div>
         )}
       </div>
+      {isModalOpen && <Modal />}
     </div>
   );
 }

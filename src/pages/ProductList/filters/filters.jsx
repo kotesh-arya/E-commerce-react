@@ -122,7 +122,7 @@ const Filters = () => {
                   dispatch({ type: "FREE_DELIVERY" });
                 }}
               />
-              <label htmlFor="category-check-delivery">Fast Delivery</label>
+              <label htmlFor="category-check-delivery">Free Delivery</label>
             </div>
           </div>
           <div className="availability-container">

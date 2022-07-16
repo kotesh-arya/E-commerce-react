@@ -1,13 +1,15 @@
 import React from "react";
 import "../../../../Colours/colours.css";
 import "../NavBar/NavBar.css";
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { GlobalCartContext } from "../../../../contexts/cartContext";
 import { GlobalWishlistContext } from "../../../../contexts/wishlistContext";
+import { useAuth } from "../../../../contexts/authContext";
 const NavBar = () => {
   const { amount } = GlobalCartContext();
   const { wishlist } = GlobalWishlistContext();
+  const { userName, isLoggedIn } = useAuth();
   return (
     <div className="navigation-container">
       <div className="nav-header">
@@ -32,10 +34,10 @@ const NavBar = () => {
           placeholder="Type here..."
           type="search"
         />
-<FaSearch className="input-icon"/>
+        <FaSearch className="input-icon" />
         <i className="fa-solid fa-magnifying-glass input-icon"></i>
       </div>
-
+      <h4>Hello {isLoggedIn ? userName : "User"}</h4>
       <nav className="main-links">
         <Link className="nav-icon-link" to="/WishList">
           <div className="nav-badge">
@@ -43,7 +45,7 @@ const NavBar = () => {
               className="fa fa-heart fa-2x header-icon "
               aria-hidden="true"
             ></i>
-            <div className="number-one">{wishlist.length}</div>
+            <div className="number-one">{isLoggedIn ? wishlist.length : 0}</div>
           </div>
         </Link>
 
@@ -53,7 +55,7 @@ const NavBar = () => {
               className="fa fa-shopping-cart fa-2x header-icon "
               aria-hidden="true"
             ></i>
-            <div className="number-one">{amount}</div>
+            <div className="number-one">{isLoggedIn ? amount : 0}</div>
           </div>
         </Link>
 

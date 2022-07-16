@@ -52,7 +52,6 @@ export const reducer = (state, action) => {
       state.cart.reduce(
         (cartTotal, cartItem) => {
           const { sellingPrice, listedPrice, amount } = cartItem;
-          // console.log(sellingPrice, amount, listedPrice);
           let itemTotal = sellingPrice * amount;
           cartTotal.total += itemTotal;
           cartTotal.amount += amount;
@@ -78,7 +77,14 @@ export const reducer = (state, action) => {
     return {
       ...state,
       isModalOpen: true,
-      modalContent: ` ${action.payload} already exists in the Cart`,
+      modalContent: ` ${action.payload} already exists in the CART`,
+    };
+  }
+  if (action.type === "INVALID_USER_INPUT") {
+    return {
+      ...state,
+      isModalOpen: true,
+      modalContent: `Incorrect Email or Password, Please try again`,
     };
   }
   if (action.type === "REMOVE_MODAL") {

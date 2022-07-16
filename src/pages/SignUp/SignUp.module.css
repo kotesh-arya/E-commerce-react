@@ -3,7 +3,7 @@
     text-align: center;
     box-shadow: 3px 3px 8px var(--grey);
     margin: auto;
-    margin: 10rem auto 0 auto;
+    margin: 5rem auto 0 auto;
     padding: 1.5rem;
     font-size: var(--large-font-size);
     border-radius: 10px;
@@ -11,7 +11,7 @@
 }
 
 .header-large {
-    margin: 0 0 3rem 0;
+    margin: 0 0 1rem 0;
 }
 
 .input {
@@ -54,6 +54,7 @@
     width: 90%;
     margin: 1rem auto;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .login-link {
