@@ -5,10 +5,6 @@ import SignUpCSS from "../SignUp/SignUp.module.css";
 import { useAuth } from "../../contexts/authContext";
 function SignUp() {
   const { signupUser } = useAuth();
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -87,7 +83,6 @@ function SignUp() {
               formData.email,
               formData.password
             );
-            
           }}
         >
           Create new Account
