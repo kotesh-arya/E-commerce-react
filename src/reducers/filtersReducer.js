@@ -1,7 +1,5 @@
-
 export const reducer = (state, action) => {
   if (action.type === "CLEAR_FILTERS") {
-    console.log(state);
     return {
       ...state,
       minPrice: 500,
@@ -10,43 +8,43 @@ export const reducer = (state, action) => {
       deliveryChecked: false,
       stockChecked: false,
       sortBy: null,
-      minRating: 1
+      minRating: 1,
     };
   }
   if (action.type === "RATING") {
     return {
       ...state,
-      minRating: action.payload
+      minRating: action.payload,
     };
   }
   if (action.type === "MEN") {
     return {
       ...state,
-      menChecked: !state.menChecked
+      menChecked: !state.menChecked,
     };
   }
   if (action.type === "WOMEN") {
     return {
       ...state,
-      womenChecked: !state.womenChecked
+      womenChecked: !state.womenChecked,
     };
   }
   if (action.type === "FREE_DELIVERY") {
     return {
       ...state,
-      deliveryChecked: !state.deliveryChecked
+      deliveryChecked: !state.deliveryChecked,
     };
   }
   if (action.type === "SORT") {
     return {
       ...state,
-      sortBy: action.payload
+      sortBy: action.payload,
     };
   }
   if (action.type === "IN_STOCK") {
     return {
       ...state,
-      stockChecked: !state.stockChecked
+      stockChecked: !state.stockChecked,
     };
   }
   return state;

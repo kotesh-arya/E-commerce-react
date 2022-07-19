@@ -1,5 +1,4 @@
 export const reducer = (state, action) => {
-  console.log("wishlist reducer working");
   if (action.type === "ADD_TO_WISHLIST") {
     console.log(action.item);
     return {

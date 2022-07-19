@@ -192,3 +192,7 @@
   display: flex;
   margin: -1.1rem 0 0.4rem 0;
 }
+button :nth-child(1) {
+  margin-bottom: -3px;
+  font-size: 1.2rem;
+}

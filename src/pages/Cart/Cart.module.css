@@ -1,155 +1,148 @@
-
-
-
 body {
-    background-color: var(--page-bg-color);
+  background-color: var(--page-bg-color);
 }
 
 .cart-header {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 .cart-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 4rem 3rem 0 3rem;
-    padding: 1rem 0 6.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 4rem 3rem 0 3rem;
+  padding: 1rem 0 6.5rem 0;
 }
 
 .item-price-container-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .horizontal-card {
-    margin: 2rem 0 0 0;
-    width: 38rem;
+  margin: 2rem 0 0 0;
+  width: 38rem;
 }
 
 .cart-item-title {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .cart-product-image {
-    height: 13rem;
-    width: auto;
-    object-fit: cover;
+  height: 13rem;
+  width: auto;
+  object-fit: cover;
 }
 
 .cart-price-detail-card {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    width: 25rem;
-    margin: 2rem 2rem 2rem 2rem;
-    padding: 2rem 0 1rem 0;
-    border-radius: 3px;
-    box-shadow: none;
-    border-radius: 10px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 25rem;
+  margin: 2rem 2rem 2rem 2rem;
+  padding: 2rem 0 1rem 0;
+  border-radius: 3px;
+  box-shadow: none;
+  border-radius: 10px;
 }
 
 .price-calculation-container {
-    display: flex;
-    justify-content: space-between;
-    margin: 1rem 0 1rem 0;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0 1rem 0;
+  align-items: center;
 }
 
 .price-card-title {
-    margin: -1rem 0 0 1rem;
+  margin: -1rem 0 0 1rem;
 }
 
-
 .price-card-item {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .final-price {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
 }
 
 .money-save-text {
-    text-align: center;
-    font-size: var(--meduim-font-size);
-    padding: 1.5rem 0.5rem 0 0.5rem;
+  text-align: center;
+  font-size: var(--meduim-font-size);
+  padding: 1.5rem 0.5rem 0 0.5rem;
 }
 
 .place-order-btn {
-    border-radius: 5px;
-    cursor: pointer;
-    width: 90%;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 90%;
 }
 
 .cart-card-title {
-    font-size: var(--larger-font-size);
-    font-weight: var(--bolder-font-weight);
-    background-color: var(--white);
+  font-size: var(--larger-font-size);
+  font-weight: var(--bolder-font-weight);
+  background-color: var(--white);
 }
 
 .price {
-    margin: 0;
+  margin: 0;
 }
 
 .light-text {
-    color: var(--grey);
+  color: var(--grey);
 }
-
 
 .btn-counter {
-    border-radius: 50%;
-    border: 1px solid var(--grey);
-    width: 1.5rem;
-    height: 1.5rem;
-    cursor: pointer;
-    background-color: var(--primary-color);
-    color: var(--white);
+  border-radius: 50%;
+  border: 1px solid var(--grey);
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: var(--white);
 }
 
-    
-.quantity-setting{
-    height: 3rem;
-    padding-top: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+.quantity-setting {
+  height: 3rem;
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
-.quantity-group{
-    display: flex;
-    justify-content: space-between;
-    width: 4.5rem;
-    align-items: center;
-    margin-left: 10px;
+.quantity-group {
+  display: flex;
+  justify-content: space-between;
+  width: 4.5rem;
+  align-items: center;
+  margin-left: 10px;
 }
 .quantity-input {
-    width: 2rem;
+  width: 2rem;
 }
 
 .cart-card-buttons {
-    display: flex;
-    flex-direction: row;
-    margin-left: -1rem;
-    padding-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  margin-left: -1rem;
+  padding-top: 1rem;
 }
 
 .remove-btn {
-    background-color: var(--white);
-    color: var(--primary-color);
-    border: 1.5px solid var(--primary-color);
-    margin: 1rem;
+  background-color: var(--white);
+  color: var(--primary-color);
+  border: 1.5px solid var(--primary-color);
+  margin: 1rem;
 }
 
 .cart-card-button {
-    padding: 8px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 50%;
-    margin: 10px 10px;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 50%;
+  margin: 10px 10px;
 }
-.empty-cart-image{
-    width: 25rem;
+.empty-cart-image {
+  width: 25rem;
 }

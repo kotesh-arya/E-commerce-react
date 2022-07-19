@@ -43,18 +43,22 @@ function CartProduct({
           </h3>
         </div>
         <div className={CartCSS["quantity-setting"]}>
-          <span><strong>Quantity:</strong></span>
-          <div className={CartCSS["quantity-group"]} >
-          <IoMdArrowDropdownCircle
-            className={CartCSS["btn-counter"]}
-            onClick={() => decrease(id)}
-          />
-          <span><strong>{amount}</strong></span>
+          <span>
+            <strong>Quantity:</strong>
+          </span>
+          <div className={CartCSS["quantity-group"]}>
+            <IoMdArrowDropdownCircle
+              className={CartCSS["btn-counter"]}
+              onClick={() => decrease(id)}
+            />
+            <span>
+              <strong>{amount}</strong>
+            </span>
 
-          <IoMdArrowDropupCircle
-            className={CartCSS["btn-counter"]}
-            onClick={() => increase(id)}
-          />
+            <IoMdArrowDropupCircle
+              className={CartCSS["btn-counter"]}
+              onClick={() => increase(id)}
+            />
           </div>
         </div>
         <div className={CartCSS["cart-card-buttons"]}>

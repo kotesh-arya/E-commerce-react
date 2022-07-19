@@ -1,0 +1,26 @@
+
+.info-container{
+  margin-top: 8rem;
+}
+
+.user-info {
+  width: 24rem;
+  text-align: center;
+  box-shadow: 3px 3px 8px var(--grey);
+  margin: 10rem auto;
+  margin: 3rem auto 0 auto;
+  padding: 1.5rem;
+  font-size: var(--large-font-size);
+  border-radius: 10px;
+  background-color: var(--white);
+}
+.user-info button {
+  margin-top: 2rem;
+  border-radius: 30px;
+  padding: 10px 30px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  color: var(--white);
+  background-color: var(--primary-color);
+}

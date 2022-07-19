@@ -1,4 +1,3 @@
-// //Rating slider
 
 export const setRating = (products, rating) => {
   return products.filter((item) => item.rating >= rating);
@@ -6,9 +5,6 @@ export const setRating = (products, rating) => {
 
 export const toggleMenCategory = (products, womenChecked, menChecked) => {
   if (womenChecked) {
-    // return products.filter((item) => {
-    //   menChecked ? item : womenFiltered;
-    // });
     if (menChecked) {
       return products;
     } else {
@@ -23,9 +19,6 @@ export const toggleMenCategory = (products, womenChecked, menChecked) => {
 
 export const toggleWomenCategory = (products, menChecked, womenChecked) => {
   if (menChecked) {
-    // return products.filter((item) => {
-    //   womenChecked ? item : menFiltered;
-    // });
     if (womenChecked) {
       return products;
     } else {
@@ -36,16 +29,6 @@ export const toggleWomenCategory = (products, menChecked, womenChecked) => {
       womenChecked ? item.categoryName === "women" : item
     );
   }
-
-  // {
-  //   if (womenChecked && menChecked) {
-  //     return products;
-  //   } else if (womenChecked) {
-  //     return item.categoryName === "women";
-  //   } else {
-  //     return item;
-  //   }
-  // }
 };
 
 export const toggleDelivery = (products, deliveryChecked) => {
@@ -59,8 +42,6 @@ export const toggleStockAvailability = (products, stockChecked) => {
     stockChecked ? item.inStock === true : item
   );
 };
-
-// //Price Sorting
 
 export const sortProducts = (products, way) => {
   if (way === "HIGH_TO_LOW") {

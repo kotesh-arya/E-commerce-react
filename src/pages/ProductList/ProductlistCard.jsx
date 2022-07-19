@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { GlobalCartContext } from "../../contexts/cartContext";
 import { GlobalWishlistContext } from "../../contexts/wishlistContext";
+import {HiShoppingCart} from "react-icons/hi";
+import {BsArrowRight} from "react-icons/bs"
 function ProductlistCard({
   _id,
   title,
@@ -58,6 +60,7 @@ function ProductlistCard({
 
       <div className="card-content">
         <div className="card-title">{title}</div>
+       
         <div className="product-rating">
           {Array(rating)
             .fill()
@@ -78,7 +81,7 @@ function ProductlistCard({
       {cart.some((item) => item.id === _id) ? (
         <Link className="nav-icon-link" to="/Cart">
           <button className="btn outline-primary card-button">
-            GO TO CART
+            GO TO CART <BsArrowRight/>
           </button>
         </Link>
       ) : (
@@ -100,7 +103,7 @@ function ProductlistCard({
             });
           }}
         >
-          ADD TO CART
+          <HiShoppingCart/> ADD TO CART 
         </button>
       )}
     </div>
