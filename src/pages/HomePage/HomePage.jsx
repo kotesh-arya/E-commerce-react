@@ -1,10 +1,11 @@
 import React from "react";
-import { Banner } from "./HomePageComponents/Banner/Banner";
-import { CategoryCard } from "./HomePageComponents/CategoryCard/CategoryCard";
-import { Footer } from "./HomePageComponents/Footer/Footer";
-import { NavBar } from "./HomePageComponents/NavBar/NavBar";
-import { TrendingCard } from "./HomePageComponents/TrendingCard/TrendingCard";
-
+import {
+  NavBar,
+  Banner,
+  CategoryCard,
+  TrendingCard,
+  Footer,
+} from "./HomePageComponents";
 function HomePage() {
   return (
     <div>

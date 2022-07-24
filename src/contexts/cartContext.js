@@ -35,8 +35,8 @@ const CartProvider = ({ children }) => {
   );
 };
 
-const GlobalCartContext = () => {
+const useCart = () => {
   return useContext(CartContext);
 };
 
-export { CartProvider, GlobalCartContext };
+export { CartProvider, useCart };

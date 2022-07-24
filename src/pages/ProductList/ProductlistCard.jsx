@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { GlobalCartContext } from "../../contexts/cartContext";
-import { GlobalWishlistContext } from "../../contexts/wishlistContext";
+import { useCart } from "../../contexts/cartContext";
+import { useWishlist } from "../../contexts/wishlistContext";
+import { HiShoppingCart } from "react-icons/hi";
+import { BsArrowRight } from "react-icons/bs";
 function ProductlistCard({
   _id,
   title,
@@ -15,8 +17,8 @@ function ProductlistCard({
   const calculateDiscount = (initialPrice, sellingPrice) => {
     return ((initialPrice - sellingPrice) / initialPrice) * 100;
   };
-  const { dispatch, cart } = GlobalCartContext();
-  const { wishlistDispatch, wishlist, dislike } = GlobalWishlistContext();
+  const { dispatch, cart } = useCart();
+  const { wishlistDispatch, wishlist, dislike } = useWishlist();
   return (
     <div className="card badge-card">
       <div className="label-icon ">
@@ -24,7 +26,7 @@ function ProductlistCard({
 
         {wishlist.some((item) => item.id === _id) ? (
           <i
-            onClick={()=>dislike(_id)}
+            onClick={() => dislike(_id)}
             className="fa fa-heart fa-2x liked-heart "
             aria-hidden="true"
           ></i>
@@ -49,7 +51,6 @@ function ProductlistCard({
             aria-hidden="true"
           ></i>
         )}
-       
       </div>
 
       <div className="card-image-container">
@@ -58,6 +59,7 @@ function ProductlistCard({
 
       <div className="card-content">
         <div className="card-title">{title}</div>
+
         <div className="product-rating">
           {Array(rating)
             .fill()
@@ -78,7 +80,7 @@ function ProductlistCard({
       {cart.some((item) => item.id === _id) ? (
         <Link className="nav-icon-link" to="/Cart">
           <button className="btn outline-primary card-button">
-            GO TO CART
+            GO TO CART <BsArrowRight />
           </button>
         </Link>
       ) : (
@@ -100,7 +102,7 @@ function ProductlistCard({
             });
           }}
         >
-          ADD TO CART
+          <HiShoppingCart /> ADD TO CART
         </button>
       )}
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
-import { GlobalCartContext } from "../../contexts/cartContext";
-import { GlobalWishlistContext } from "../../contexts/wishlistContext";
+import { useCart } from "../../contexts/cartContext";
+import { useWishlist } from "../../contexts/wishlistContext";
 
 function WishlistProductCard({
   title,
@@ -13,8 +13,8 @@ function WishlistProductCard({
   const calculateDiscount = (initialPrice, sellingPrice) => {
     return ((initialPrice - sellingPrice) / initialPrice) * 100;
   };
-  const { removeFromWishlist } = GlobalWishlistContext();
-  const { dispatch, cart } = GlobalCartContext();
+  const { removeFromWishlist } = useWishlist();
+  const { dispatch, cart } = useCart();
   return (
     <div className="card badge-card">
       <div className="card-image-container">

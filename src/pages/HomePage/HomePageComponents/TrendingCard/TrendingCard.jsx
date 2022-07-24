@@ -20,7 +20,7 @@ function TrendingCard() {
               <div className="horizontal-card-content">
                 <div className=" trend-card-title">{item.trendingTitle}</div>
                 <p className="treding-card-text-content">{item.description}</p>
-                <Link  to="/ProductList">
+                <Link to="/ProductList">
                   <button className="btn trending-card-btn btn-link">
                     VIEW PRODUCT
                   </button>

@@ -21,8 +21,16 @@
 .filter-header {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0 1rem;
   align-items: center;
+}
+.filter-header button{
+  border-radius: 3px;
+}
+.filter-header button a {
+  color: var(--white);
+  padding: 5px 0;
+  text-decoration: none;
 }
 
 .price-slider {
@@ -35,8 +43,11 @@
 }
 
 .price-slider h4 {
-  font-size: 1.5rem;
-  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  margin: 0 0 0.5rem 0;
+}
+.slider {
+  font-size: 10px;
 }
 
 .slider-ranges {
@@ -59,9 +70,9 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 0.5rem 1rem 0 1rem;
+  padding: 0rem 1rem 0 0.5rem;
   margin: 0 0 0 1rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .category-one,
@@ -84,9 +95,20 @@
 
 .sorting-item {
   list-style-type: none;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
+}
+.category-container-col a {
+  text-decoration: none;
+  margin: 5px 0;
 }
 
+.inner-page-link {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 1.5rem;
+}
 .product-section {
   display: flex;
   flex-direction: column;
@@ -94,7 +116,7 @@
   width: 78%;
   position: absolute;
   left: 20rem;
-  top: 3rem;
+  top: 2rem;
   z-index: 1;
 }
 
@@ -191,4 +213,8 @@
 .product-rating {
   display: flex;
   margin: -1.1rem 0 0.4rem 0;
+}
+button :nth-child(1) {
+  margin-bottom: -3px;
+  font-size: 1.2rem;
 }
