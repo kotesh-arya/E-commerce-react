@@ -1,3 +1,8 @@
+.flex-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .navigation-container {
   padding: 0 0.5rem;
   background-color: var(--white);
@@ -8,7 +13,7 @@
 }
 
 .site-logo {
-  width: 12rem;
+  width: 12rem; 
 }
 
 .header-shop-link {
@@ -19,13 +24,12 @@
 .header-shop-link:hover {
   color: var(--primary-color);
 }
+.nav-left{
+  width: 30%;
 
-.search-input-container {
-  display: flex;
-  align-items: center;
-  width: 30rem;
-  padding: 0 1rem;
-  margin: 0 0 0  2rem;
+}
+.nav-right{
+  width: 20%;
 }
 
 .input-icon {

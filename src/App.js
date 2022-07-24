@@ -8,6 +8,7 @@ import { SignIn } from "./pages/SignIn/SignIn";
 import { UserInfo } from "./pages/UserInfo/UserInfo";
 import { Routes, Route } from "react-router-dom";
 import { RequiresAuth } from "./RequiresAuth";
+import { NotFound } from "./pages/NotFound/NotFound";
 function App() {
   return (
     <div className="App">
@@ -15,8 +16,9 @@ function App() {
         <Route path="/" element={<HomePage />}>
           Home
         </Route>
-        <Route path="/ProductList" element={<ProductList />}>
-          ProductList
+        <Route path="/ProductList">
+          <Route index element={<ProductList />} />
+          <Route path="/ProductList/:category" element={<ProductList />} />
         </Route>
         <Route path="/UserInfo" element={<UserInfo />}>
           UserInfo
@@ -47,6 +49,7 @@ function App() {
         <Route path="/SignIn" element={<SignIn />}>
           Sign In
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

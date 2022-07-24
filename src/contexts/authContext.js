@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, createContext, useReducer } from "react";
 import { reducer } from "../reducers/authReducer";
 import { useNavigate, useLocation } from "react-router-dom";
-import { GlobalCartContext } from "./cartContext";
+import { useCart } from "./cartContext";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
     userExists: false,
   };
   const [userState, userDispatch] = useReducer(reducer, intialState);
-  const {dispatch} = GlobalCartContext();
+  const { dispatch } = useCart();
   // Login Function
 
   const loginUser = async (email, password) => {

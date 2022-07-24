@@ -1,9 +1,10 @@
 import React from "react";
 import "../ProductList.css";
-import { ProductsFilterContext } from "../../../contexts/filtersContext";
-
+import { useProductsFilter } from "../../../contexts/filtersContext";
+import { Link, NavLink } from "react-router-dom";
+import { useCategories } from "../../../contexts/categoryContext";
 const Filters = () => {
-  const { state, dispatch } = ProductsFilterContext();
+  const { state, dispatch } = useProductsFilter();
 
   const {
     minRating,
@@ -13,6 +14,7 @@ const Filters = () => {
     stockChecked,
     sortBy,
   } = state;
+  const { categories } = useCategories();
 
   return (
     <div>
@@ -26,43 +28,43 @@ const Filters = () => {
                 dispatch({ type: "CLEAR_FILTERS" });
               }}
             >
-              CLEAR
+              <Link to="/ProductList"> CLEAR</Link>
             </button>
           </div>
 
           <div className="price-slider">
             <h4>Customer Ratings</h4>
             <div className="slider-ranges">
-              <h3>
+              <span>
                 1
                 <span aria-label="rating" role="img">
                   ⭐
                 </span>
-              </h3>
-              <h3>
+              </span>
+              <span>
                 2
                 <span aria-label="rating" role="img">
                   ⭐
                 </span>
-              </h3>
-              <h3>
+              </span>
+              <span>
                 3
                 <span aria-label="rating" role="img">
                   ⭐
                 </span>
-              </h3>
-              <h3>
+              </span>
+              <span>
                 4
                 <span aria-label="rating" role="img">
                   ⭐
                 </span>
-              </h3>
-              <h3>
+              </span>
+              <span>
                 5
                 <span aria-label="rating" role="img">
                   ⭐
                 </span>
-              </h3>
+              </span>
             </div>
             <div className="slider-container">
               <input
@@ -170,10 +172,28 @@ const Filters = () => {
               <label htmlFor="decrease">Low to High</label>
             </li>
           </ul>
+
+          <div className="category-container-col">
+            <h4>Product Categories</h4>
+
+            {categories.map((category) => {
+              return (
+                <NavLink
+                  className={({ isActive }) => {
+                    return isActive ? "inner-page-link" : "";
+                  }}
+                  key={category._id}
+                  to={`/ProductList/${category.categoryName}`}
+                >
+                  <p>{category.categoryName.toLowerCase()}</p>
+                </NavLink>
+              );
+            })}
+          </div>
         </form>
       </div>
     </div>
   );
 };
 
-export default Filters;
+export { Filters };

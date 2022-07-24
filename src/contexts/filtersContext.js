@@ -23,8 +23,8 @@ const FilterProvider = ({ children }) => {
   );
 };
 
-const ProductsFilterContext = () => {
+const useProductsFilter = () => {
   return useContext(FilterContext);
 };
 
-export { FilterProvider, ProductsFilterContext };
+export { FilterProvider, useProductsFilter };

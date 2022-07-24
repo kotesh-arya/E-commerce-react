@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { NavBar } from "../HomePage/HomePageComponents";
 import { Modal } from "../Modal";
 import { UserInfo } from "../UserInfo/UserInfo";
 import SignInCSS from "../SignIn/SignIn.module.css";
 import { useAuth } from "../../contexts/authContext";
-import { GlobalCartContext } from "../../contexts/cartContext";
-import { useState } from "react";
+import { useCart } from "../../contexts/cartContext";
 function SignIn() {
   const { loginUser, userDispatch, isLoggedIn } = useAuth();
-  const { isModalOpen, dispatch } = GlobalCartContext();
+  const { isModalOpen, dispatch } = useCart();
   setTimeout(() => {
     dispatch({ type: "REMOVE_MODAL" });
   }, 10000);
@@ -17,6 +16,7 @@ function SignIn() {
     email: "",
     password: "",
   });
+
   return (
     <div>
       <NavBar />
@@ -42,7 +42,7 @@ function SignIn() {
             <input
               className={`input-box basic ${SignInCSS["text-field"]}`}
               type="password"
-              placeholder="************"
+              placeholder="password"
               value={formData.password}
               onChange={(e) =>
                 setFormData((prev) => ({ ...prev, password: e.target.value }))

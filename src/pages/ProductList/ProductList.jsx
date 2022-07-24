@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavBar } from "../HomePage/HomePageComponents";
-import Filters from "./filters/filters";
-import "../../Colours/colours.css";
-import "../ProductList/ProductList.css";
-import { ProductsFilterContext } from "../../contexts/filtersContext";
-
+import { Filters } from "./filters/filters";
 import { ProductlistCard } from "./ProductlistCard";
 import { OutOfStockCard } from "./OutOfStockCard";
-import axios from "axios";
+import "../../Colours/colours.css";
+import "../ProductList/ProductList.css";
+import { useParams } from "react-router-dom";
+import { useProducts } from "../../contexts/productContext";
+import { useProductsFilter } from "../../contexts/filtersContext";
 import {
   setRating,
   toggleMenCategory,
@@ -18,17 +18,11 @@ import {
 } from "../ProductList/filters/filterOperations";
 
 function ProductList() {
-  const [products, setProducts] = useState([]);
-  const fetchProducts = async () => {
-    const response = await axios.get("/api/products");
-    const products = response.data.products;
-    setProducts(products);
-  };
-  useEffect(() => {
-    fetchProducts();
-  }, []);
+  const params = useParams();
+  console.log(params.category);
+  const { allProducts } = useProducts();
 
-  const { state } = ProductsFilterContext();
+  const { state } = useProductsFilter();
 
   const {
     minRating,
@@ -38,8 +32,12 @@ function ProductList() {
     stockChecked,
     sortBy,
   } = state;
-
-  const ratingFiltered = setRating(products, minRating);
+  const categorisedProducts = allProducts.filter((product) => {
+    return params.category
+      ? product.productCategory?.toLowerCase() === params.category.toLowerCase()
+      : true;
+  });
+  const ratingFiltered = setRating(categorisedProducts, minRating);
   const menFiltered = toggleMenCategory(
     ratingFiltered,
     womenChecked,

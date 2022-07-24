@@ -1,0 +1,13 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.not-found{
+  width: 30rem;
+}
+.home-btn{
+  cursor: pointer;
+  border-radius: 5px;
+}

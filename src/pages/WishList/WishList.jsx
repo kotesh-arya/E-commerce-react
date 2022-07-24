@@ -3,15 +3,15 @@ import { Modal } from "../Modal";
 import { NavBar } from "../HomePage/HomePageComponents/NavBar/NavBar";
 import "../WishList/Wishlist.css";
 import { WishlistProductCard } from "../WishList/WishlistProductCard";
-import { GlobalWishlistContext } from "../../contexts/wishlistContext";
-import { GlobalCartContext } from "../../contexts/cartContext";
+import { useWishlist } from "../../contexts/wishlistContext";
+import { useCart } from "../../contexts/cartContext";
 import EmptyWishlistImage from "../WishList/empty-wishlist.png";
 function WishList() {
-  const { wishlist } = GlobalWishlistContext();
-  const { isModalOpen, dispatch } = GlobalCartContext();
+  const { wishlist } = useWishlist();
+  const { isModalOpen, dispatch } = useCart();
   setTimeout(() => {
     dispatch({ type: "REMOVE_MODAL" });
-  }, 6000);
+  }, 6000);       
   return (
     <div>
       <NavBar />

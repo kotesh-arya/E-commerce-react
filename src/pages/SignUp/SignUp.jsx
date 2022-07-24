@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { NavBar } from "../HomePage/HomePageComponents";
 import { Link } from "react-router-dom";
 import SignUpCSS from "../SignUp/SignUp.module.css";
@@ -10,6 +10,10 @@ function SignUp() {
     lastName: "",
     email: "",
     password: "",
+  });
+  const firstNameData = useRef();
+  useEffect(() => {
+    firstNameData.current.focus();
   });
   return (
     <div>
@@ -24,6 +28,7 @@ function SignUp() {
             type="text"
             placeholder="Enter your First name"
             value={formData.firstName}
+            ref={firstNameData}
             onChange={(e) => {
               setFormData((prev) => ({ ...prev, firstName: e.target.value }));
             }}
@@ -59,7 +64,7 @@ function SignUp() {
           <input
             className={`input-box basic ${SignUpCSS["text-field"]}`}
             type="password"
-            placeholder="************"
+            placeholder="password"
             value={formData.password}
             onChange={(e) => {
               setFormData((prev) => ({ ...prev, password: e.target.value }));

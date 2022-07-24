@@ -3,11 +3,11 @@ import { NavBar } from "../HomePage/HomePageComponents";
 import "../../Colours/colours.css";
 import CartCSS from "../Cart/Cart.module.css";
 import { CartProduct } from "../Cart/CartProduct";
-import { GlobalCartContext } from "../../contexts/cartContext";
+import { useCart } from "../../contexts/cartContext";
 import EmptyCartImage from "../Cart/empty-cart.png";
 function Cart() {
   const { cart, total, amount, listedPriceTotal, discountPriceTotal } =
-    GlobalCartContext();
+    useCart();
 
   return (
     <div>

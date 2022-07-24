@@ -5,7 +5,6 @@ const WishlistContext = createContext();
 const WishlistProvider = ({ children }) => {
   const initialState = {
     wishlist: [],
-   
   };
   const addToWIshlist = (id) => {
     wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: id });
@@ -40,8 +39,8 @@ const WishlistProvider = ({ children }) => {
   );
 };
 
-const GlobalWishlistContext = () => {
+const useWishlist = () => {
   return useContext(WishlistContext);
 };
 
-export { WishlistProvider, GlobalWishlistContext };
+export { WishlistProvider, useWishlist };

@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { categories } from "../../../../backend/db/categories";
 import "../../../../Colours/colours.css";
 import "../CategoryCard/CategoryCard.css";
+import { useCategories } from "../../../../contexts/categoryContext";
 const CategoryCard = () => {
+  const { categories } = useCategories();
   return (
     <div className="category-container">
       <div className="section-heading">
@@ -13,7 +14,11 @@ const CategoryCard = () => {
       <div className="categories">
         {categories.map((category) => {
           return (
-            <Link className="category-title-link" key={category._id} to="/ProductList">
+            <Link
+              className="category-title-link"
+              key={category._id}
+              to={`/ProductList/${category.categoryName}`}
+            >
               <div className="category">
                 <div className="category-image-container">
                   <img

@@ -5,7 +5,7 @@ function OutOfStockCard({
   listedPrice,
   sellingPrice,
   rating,
-  inStock,
+
 }) {
   const calculateDiscount = (initialPrice, sellingPrice) => {
     return ((initialPrice - sellingPrice) / initialPrice) * 100;
