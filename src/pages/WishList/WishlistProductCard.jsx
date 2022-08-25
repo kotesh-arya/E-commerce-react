@@ -1,7 +1,7 @@
 import React from "react";
 import { useCart } from "../../contexts/cartContext";
 import { useWishlist } from "../../contexts/wishlistContext";
-
+import { Link } from "react-router-dom";
 function WishlistProductCard({
   title,
   imageSource,
@@ -18,7 +18,9 @@ function WishlistProductCard({
   return (
     <div className="card badge-card">
       <div className="card-image-container">
-        <img className="card-image" src={imageSource} />
+        <Link to={`/Product/${id}`}>
+          <img className="card-image" src={imageSource} />
+        </Link>
       </div>
 
       <div className="card-content">

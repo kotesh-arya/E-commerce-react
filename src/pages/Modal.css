@@ -6,6 +6,8 @@
   color: var(--primary-color);
   border-radius: 5px;
   padding: 3px 3px;
+  position: absolute;
+  margin-bottom: 3rem;
 }
 .modal-container h4 {
   margin: 1rem;

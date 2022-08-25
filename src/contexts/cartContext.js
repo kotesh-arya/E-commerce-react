@@ -9,8 +9,8 @@ const CartProvider = ({ children }) => {
     amount: 0,
     listedPriceTotal: 0,
     discountPriceTotal: 0,
-    isModalOpen: false,
-    modalContent: "",
+    isCartModalOpen: false,
+    cartModalContent: "",
   };
   const remove = (id) => {
     dispatch({ type: "REMOVE_FROM_CART", payload: id });

@@ -5,6 +5,8 @@ const WishlistContext = createContext();
 const WishlistProvider = ({ children }) => {
   const initialState = {
     wishlist: [],
+    isWishlistModalOpen: false,
+    wishlistModalContent: " ",
   };
   const addToWIshlist = (id) => {
     wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: id });

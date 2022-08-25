@@ -3,6 +3,8 @@ import "../../Colours/colours.css";
 import CartCSS from "../Cart/Cart.module.css";
 import { IoMdArrowDropupCircle, IoMdArrowDropdownCircle } from "react-icons/io";
 import { useCart } from "../../contexts/cartContext";
+import { useWishlist } from "../../contexts/wishlistContext";
+import { Link } from "react-router-dom";
 function CartProduct({
   imageSource,
   title,
@@ -15,14 +17,17 @@ function CartProduct({
     return ((initialPrice - sellingPrice) / initialPrice) * 100;
   };
   const { remove, increase, decrease } = useCart();
+  const { wishlistDispatch, wishlist } = useWishlist();
 
   return (
     <div className="horizontal-card">
       <div className="horizontal-card-image-container">
-        <img
-          className={`horizontal-card-image ${CartCSS["cart-product-image"]}`}
-          src={imageSource}
-        />
+        <Link className={CartCSS["cart-link-image"]} to={`/Product/${id}`}>
+          <img
+            className={`horizontal-card-image ${CartCSS["cart-product-image"]}`}
+            src={imageSource}
+          />
+        </Link>
       </div>
       <div className="horizontal-card-content">
         <div className=" cart-card-title">
@@ -68,7 +73,30 @@ function CartProduct({
           >
             Remove from cart
           </button>
-          <button className={`btn btn-primary ${CartCSS["cart-card-button"]}`}>
+          <button
+            className={`btn btn-primary ${CartCSS["cart-card-button"]}`}
+            onClick={() => {
+              if (wishlist.some((item) => item.id === id)) {
+                console.log("item exists");
+                wishlistDispatch({
+                  type: "PRE_EXISTED_WISHLIST_ITEM",
+                  payload: title,
+                });
+              } else {
+                wishlistDispatch({
+                  type: "ADD_TO_WISHLIST",
+                  item: {
+                    id: id,
+                    title: title,
+                    imageSource: imageSource,
+                    listedPrice: listedPrice,
+                    sellingPrice: sellingPrice,
+                    amount: amount,
+                  },
+                });
+              }
+            }}
+          >
             Add to Wishlist
           </button>
         </div>

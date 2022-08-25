@@ -6,20 +6,25 @@ import { WishlistProductCard } from "../WishList/WishlistProductCard";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { useCart } from "../../contexts/cartContext";
 import EmptyWishlistImage from "../WishList/empty-wishlist.png";
+import { useNavigate } from "react-router-dom";
 function WishList() {
   const { wishlist } = useWishlist();
-  const { isModalOpen, dispatch } = useCart();
+  const { isCartModalOpen, dispatch } = useCart();
   setTimeout(() => {
     dispatch({ type: "REMOVE_MODAL" });
-  }, 6000);       
+  }, 6000);
+  const navigate = useNavigate();
   return (
     <div>
       <NavBar />
       <div className="wishlist-container">
         {wishlist.length === 0 ? (
-          <div>
-            <h2> WISHLIST IS EMPTY, PLEASE ADD ITEMS OF YOUR WISH 😎</h2>
+          <div className="empty-wishlist-container">
             <img className="wishlist-image" src={EmptyWishlistImage} alt="" />
+            <div>
+              <h2> WISHLIST IS EMPTY, PLEASE ADD ITEMS OF YOUR WISH 😎</h2>
+              <button className="shop-now-btn" onClick={()=>{navigate("/Productlist")}}>BACK TO PRODUCTS</button>
+            </div>
           </div>
         ) : (
           <div>
@@ -32,7 +37,7 @@ function WishList() {
           </div>
         )}
       </div>
-      {isModalOpen && <Modal />}
+      {isCartModalOpen && <Modal />}
     </div>
   );
 }

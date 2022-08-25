@@ -1,57 +1,78 @@
 .trending-cards-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 5rem;
 }
 
 .trend-card-title {
-    font-size: var(--larger-font-size);
-    font-weight: var(--bolder-font-weight);
-    margin: 1rem 0;
+  font-size: var(--larger-font-size);
+  font-weight: var(--bolder-font-weight);
+  margin: 1rem 0;
 }
-
+.trending-link-card {
+  text-decoration: none;
+  color: var(--black);
+}
 .horizontal-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    width: 35rem;
-    margin: 2rem 0 0 0 ;
-    border-radius: 10px;
-}
-
-.horizontal-card-image-container {
-    height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18rem;
+  width: 35rem;
+  margin: 2rem 0 0 0;
+  border-radius: 10px;
 }
 
 .horizontal-card-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+  width: 100%;
+  object-fit: contain;
 }
 
 .horizontal-card-content {
-    margin: 0;
-    padding: 0 1rem;
+  margin: 0;
+  padding: 0 1rem;
 }
 
 .treding-card-text-content {
-    text-align: justify;
+  text-align: justify;
 }
 
 .trending {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    padding: 2rem 5rem 4rem 5rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  padding: 0rem 5rem 4rem 5rem;
+  /* background-color: red; */
 }
 
 .btn-link {
-    border-radius: 5px;
-    cursor: pointer;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .card-content {
-    text-align: left;
+  text-align: left;
+}
+.trending-card-btn {
+  margin-left: 0;
+}
+@media screen and (max-width: 584px) {
+  .trending {
+    background-color: pink;
+    padding: 1rem;
+  }
+  .horizontal-card {
+    width: 100%;
+    background-color: red;
+  }
+  .horizontal-card-content {
+    width: 50%;
+    /* object-fit: cover; */
+  }
+  .trending-card-btn {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 477px) {
 }

@@ -1,18 +1,71 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavBar } from "../HomePage/HomePageComponents";
 import "../../Colours/colours.css";
 import CartCSS from "../Cart/Cart.module.css";
 import { CartProduct } from "../Cart/CartProduct";
 import { useCart } from "../../contexts/cartContext";
 import EmptyCartImage from "../Cart/empty-cart.png";
+import { useNavigate } from "react-router-dom";
+import { useWishlist } from "../../contexts/wishlistContext";
+import { Modal } from "../../pages/Modal";
 function Cart() {
-  const { cart, total, amount, listedPriceTotal, discountPriceTotal } =
-    useCart();
+  const {
+    cart,
+    total,
+    amount,
+    listedPriceTotal,
+    discountPriceTotal,
+    dispatch,
+  } = useCart();
+  const { isWishlistModalOpen, wishlistDispatch } = useWishlist();
+  // const modalTimeout =
+  setTimeout(() => {
+    wishlistDispatch({ type: "REMOVE_MODAL" });
+  }, 6000);
 
+  const loadScript = (src) => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = src;
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
+  const displayRazorpay = async (amount) => {
+    console.log(" razorpay to be Displayed");
+    const response = await loadScript(
+      "https://checkout.razorpay.com/v1/checkout.js"
+    );
+    if (!response) {
+      alert("you are Offline 😢");
+      return;
+    }
+    const options = {
+      key: "rzp_test_I09NM8PpgOnIY7",
+      currency: "INR",
+      amount: amount * 100,
+      name: "Daily fashion INC",
+      Description: "Thanks for shopping",
+      handler: function (response) {
+        dispatch({ type: "PAYMENT_DONE" });
+        alert(response.razorpay_payment_id);
+        alert("payment Successfull");
+      },
+      // if(response.razorpay_payment_id)
+    };
+    const paymentObject = new window.Razorpay(options);
+    paymentObject.open();
+  };
+
+  const navigate = useNavigate();
   return (
     <div>
       <NavBar />
-
       <div className={CartCSS["cart-container"]}>
         <h1 className="cart-header">My Cart</h1>
         <div className={CartCSS["item-price-container-row"]}>
@@ -23,20 +76,29 @@ function Cart() {
           </div>
 
           {cart.length === 0 ? (
-            <div>
+            <div className={CartCSS["empty-cart"]}>
               <h2>
                 IS EMPTY😢 <br /> GO AND ADD ITEMS
               </h2>
+
               <img
                 className={CartCSS["empty-cart-image"]}
                 src={EmptyCartImage}
                 alt=""
               />
+              <button
+                className={CartCSS["explore-btn"]}
+                onClick={() => {
+                  navigate("/ProductList");
+                }}
+              >
+                EXPLORE
+              </button>
             </div>
           ) : (
             <div className={`card ${CartCSS["cart-price-detail-card"]}`}>
               <div className={CartCSS["price-card-title"]}>
-                <h1 className="header-small">PRICE DETAILS</h1>
+                <h2 className="header-small">PRICE DETAILS</h2>
               </div>
               <hr />
               <div className="card-content">
@@ -62,14 +124,16 @@ function Cart() {
                 </div>
                 <hr />
                 <div className={CartCSS["final-price"]}>
-                  <h2 className="header-semi-large">TOTAL AMOUNT:</h2>
+                  <h3 className="header-semi-large">TOTAL AMOUNT:</h3>
                   <h2 className="header-semi-large">Rs.{total + 100}/-</h2>
                 </div>
                 <hr />
                 <div className={CartCSS["money-save-text"]}>
                   <h2>
                     You will save{" "}
-                    <span className="header-text header-semi-large">
+                    <span
+                      className={`header-text ${CartCSS["saved-price"]} header-semi-large`}
+                    >
                       Rs.{discountPriceTotal}/-
                     </span>{" "}
                     on this order
@@ -79,6 +143,9 @@ function Cart() {
 
               <button
                 className={`btn btn-primary ${CartCSS["place-order-btn"]}`}
+                onClick={() => {
+                  displayRazorpay(total + 100);
+                }}
               >
                 PLACE ORDER
               </button>
@@ -86,6 +153,8 @@ function Cart() {
           )}
         </div>
       </div>
+      {/* {is} */}
+      {isWishlistModalOpen && <Modal />}
     </div>
   );
 }

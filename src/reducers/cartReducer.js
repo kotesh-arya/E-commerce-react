@@ -74,23 +74,30 @@ export const reducer = (state, action) => {
     };
   }
   if (action.type === "PRE_EXISTED_ITEM") {
+    console.log("item already exists in cart");
     return {
       ...state,
-      isModalOpen: true,
-      modalContent: ` ${action.payload} already exists in the CART`,
+      isCartModalOpen: true,
+      cartModalContent: `${action.payload} already exists in the CART`,
     };
   }
   if (action.type === "INVALID_USER_INPUT") {
     return {
       ...state,
-      isModalOpen: true,
-      modalContent: `Incorrect Email or Password, Please try again`,
+      isCartModalOpen: true,
+      cartModalContent: `Incorrect Email or Password, Please try again`,
     };
   }
   if (action.type === "REMOVE_MODAL") {
     return {
       ...state,
-      isModalOpen: false,
+      isCartModalOpen: false,
+    };
+  }
+  if (action.type === "PAYMENT_DONE") {
+    return {
+      ...state,
+      cart: [],
     };
   }
 

@@ -26,7 +26,7 @@ function SignIn() {
         <div className={SignInCSS["login-container"]}>
           <h1 className={SignInCSS["header-large"]}>LOG IN</h1>
           <div className={SignInCSS["input"]}>
-            <label htmlFor="input-box">E-mail adddress</label>
+            <label htmlFor="input-box">E-mail address</label>
             <input
               className={`input-box basic ${SignInCSS["text-field"]}`}
               type="text"
@@ -54,7 +54,7 @@ function SignIn() {
             <div className={SignInCSS["checkbox-text"]}>
               <input className={SignInCSS["check-box"]} type="checkbox" />
               <label className={SignInCSS["check-label"]} htmlFor="check-box">
-                Remind Me
+                Remember Me
               </label>
             </div>
             <a className={SignInCSS["forgot-password"]} href="#">

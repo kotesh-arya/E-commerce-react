@@ -9,6 +9,7 @@ import { UserInfo } from "./pages/UserInfo/UserInfo";
 import { Routes, Route } from "react-router-dom";
 import { RequiresAuth } from "./RequiresAuth";
 import { NotFound } from "./pages/NotFound/NotFound";
+import { ProductPage } from "../src/pages/ProductPage/ProductPage";
 function App() {
   return (
     <div className="App">
@@ -50,6 +51,9 @@ function App() {
           Sign In
         </Route>
         <Route path="*" element={<NotFound />} />
+        <Route path="/Product/:productId" element={<ProductPage />}>
+          Product Page
+        </Route>
       </Routes>
     </div>
   );

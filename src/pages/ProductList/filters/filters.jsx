@@ -21,14 +21,17 @@ const Filters = () => {
       <div className="filters-container">
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="filter-header">
-            <h2>Filters</h2>
+            <h3>Filters</h3>
             <button
-              className="btn btn-primary"
+              className="btn clear-btn"
               onClick={() => {
                 dispatch({ type: "CLEAR_FILTERS" });
               }}
             >
-              <Link to="/ProductList"> CLEAR</Link>
+              <Link to="/ProductList">
+                {" "}
+                <span>CLEAR</span>
+              </Link>
             </button>
           </div>
 
@@ -173,22 +176,23 @@ const Filters = () => {
             </li>
           </ul>
 
-          <div className="category-container-col">
+          <div className="product-category-col">
             <h4>Product Categories</h4>
-
-            {categories.map((category) => {
-              return (
-                <NavLink
-                  className={({ isActive }) => {
-                    return isActive ? "inner-page-link" : "";
-                  }}
-                  key={category._id}
-                  to={`/ProductList/${category.categoryName}`}
-                >
-                  <p>{category.categoryName.toLowerCase()}</p>
-                </NavLink>
-              );
-            })}
+            <div className="product-category-grid">
+              {categories.map((category) => {
+                return (
+                  <NavLink
+                    className={({ isActive }) => {
+                      return isActive ? "inner-page-link" : "";
+                    }}
+                    key={category._id}
+                    to={`/ProductList/${category.categoryName}`}
+                  >
+                    <p>{category.categoryName}</p>
+                  </NavLink>
+                );
+              })}
+            </div>
           </div>
         </form>
       </div>

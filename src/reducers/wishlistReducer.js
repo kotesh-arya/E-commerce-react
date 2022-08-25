@@ -1,6 +1,6 @@
 export const reducer = (state, action) => {
   if (action.type === "ADD_TO_WISHLIST") {
-    console.log(action.item);
+    // console.log(action.item);
     return {
       ...state,
       wishlist: [...state.wishlist, action.item],
@@ -23,6 +23,23 @@ export const reducer = (state, action) => {
     return {
       ...state,
       wishlist: tempLikedItems,
+    };
+  }
+  if (action.type === "PRE_EXISTED_WISHLIST_ITEM") {
+    console.log(
+      "from wishlist reducer, preexisted whilist item operates here!!"
+    );
+    console.log(action.payload);
+    return {
+      ...state,
+      isWishlistModalOpen: true,
+      wishlistModalContent: `${action.payload} already exists in the Wishlist`,
+    };
+  }
+  if (action.type === "REMOVE_MODAL") {
+    return {
+      ...state,
+      isWishlistModalOpen: false,
     };
   }
   return state;

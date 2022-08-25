@@ -25,12 +25,12 @@ const NavBar = () => {
         </div>
 
         <Link className="header-shop-link" to="/ProductList">
-          <h4>SHOP NOW</h4>
+          <p>SHOP NOW</p>
         </Link>
       </div>
 
       <div className="nav-right flex-div">
-        <h4>Hello {isLoggedIn ? userName : "User"}</h4>
+        <h4> {isLoggedIn && `Hello ${userName} 👋`}</h4>
         <nav className="main-links">
           <Link className="nav-icon-link" to="/WishList">
             <div className="nav-badge">

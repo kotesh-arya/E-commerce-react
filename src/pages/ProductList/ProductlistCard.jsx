@@ -22,7 +22,7 @@ function ProductlistCard({
   return (
     <div className="card badge-card">
       <div className="label-icon ">
-        <div className="label">NEW</div>
+        <div className="label">New</div>
 
         {wishlist.some((item) => item.id === _id) ? (
           <i
@@ -54,7 +54,9 @@ function ProductlistCard({
       </div>
 
       <div className="card-image-container">
-        <img className="card-image" src={imageSource} alt="watch" />
+        <Link className="link-card" to={`/Product/${_id}`}>
+          <img className="card-image" src={imageSource} alt="watch" />
+        </Link>
       </div>
 
       <div className="card-content">
@@ -106,6 +108,7 @@ function ProductlistCard({
         </button>
       )}
     </div>
+    // </Link>
   );
 }
 
