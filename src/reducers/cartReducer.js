@@ -73,14 +73,14 @@ export const reducer = (state, action) => {
       cart: [...state.cart, action.item],
     };
   }
-  if (action.type === "PRE_EXISTED_ITEM") {
-    console.log("item already exists in cart");
-    return {
-      ...state,
-      isCartModalOpen: true,
-      cartModalContent: `${action.payload} already exists in the CART`,
-    };
-  }
+  // if (action.type === "PRE_EXISTED_ITEM") {
+  //   console.log("item already exists in cart");
+  //   return {
+  //     ...state,
+  //     isCartModalOpen: true,
+  //     cartModalContent: `${action.payload} already exists in the CART`,
+  //   };
+  // }
   if (action.type === "INVALID_USER_INPUT") {
     return {
       ...state,

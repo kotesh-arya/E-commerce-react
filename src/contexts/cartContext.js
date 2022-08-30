@@ -1,5 +1,7 @@
 import { useContext, createContext, useReducer, useEffect } from "react";
 import { reducer } from "../reducers/cartReducer";
+import { toast } from "react-toastify";
+
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
@@ -14,6 +16,15 @@ const CartProvider = ({ children }) => {
   };
   const remove = (id) => {
     dispatch({ type: "REMOVE_FROM_CART", payload: id });
+    toast.info("Item removed from Cart", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   const increase = (id) => {
     dispatch({ type: "INCREASE_CART_ITEM", payload: id });

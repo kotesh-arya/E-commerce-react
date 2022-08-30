@@ -1,3 +1,4 @@
+
 export const reducer = (state, action) => {
   if (action.type === "UPDATE_TOKEN_AND_USER_DATA") {
     console.log(action.payload.foundUser);

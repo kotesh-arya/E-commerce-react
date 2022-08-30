@@ -8,6 +8,7 @@ import "../ProductList/ProductList.css";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../../contexts/productContext";
 import { useProductsFilter } from "../../contexts/filtersContext";
+
 import {
   setRating,
   toggleMenCategory,

@@ -3,6 +3,8 @@ import { useContext, createContext, useReducer } from "react";
 import { reducer } from "../reducers/authReducer";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useCart } from "./cartContext";
+import { toast } from "react-toastify";
+
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -44,12 +46,29 @@ const AuthProvider = ({ children }) => {
             navigate("/ProductList");
           }
 
-          localStorage.setItem("JWT_TOKEN", encodedToken);
           console.log(foundUser);
+          toast.success("Succesfully Signed In!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       } catch (error) {
         dispatch({ type: "INVALID_USER_INPUT" });
         console.log(error);
+        toast.warning(" User Not Found, Please SignUP", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
     }
   };
@@ -73,12 +92,29 @@ const AuthProvider = ({ children }) => {
           });
           console.log(createdUser);
           navigate("/");
-          localStorage.setItem("JWT_TOKEN", encodedToken);
+          toast.success("Succesfully Signed Up & In!", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       } catch (error) {
         console.log(error);
         if (error.response.status === 422) {
           userDispatch({ type: "USER_ALREADY_EXISTS" });
+          toast.warning("User Already Exists", {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       }
     }
@@ -86,6 +122,15 @@ const AuthProvider = ({ children }) => {
   const logoutUser = () => {
     navigate("/");
     userDispatch({ type: "USER_LOGOUT" });
+    toast.success("Logged OUT", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   return (
     <AuthContext.Provider

@@ -5,6 +5,7 @@ import { IoMdArrowDropupCircle, IoMdArrowDropdownCircle } from "react-icons/io";
 import { useCart } from "../../contexts/cartContext";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 function CartProduct({
   imageSource,
   title,
@@ -69,7 +70,9 @@ function CartProduct({
         <div className={CartCSS["cart-card-buttons"]}>
           <button
             className={`btn btn-primary ${CartCSS["cart-card-button"]} ${CartCSS["remove-btn"]}`}
-            onClick={() => remove(id)}
+            onClick={() => {
+              remove(id);
+            }}
           >
             Remove from cart
           </button>
@@ -78,9 +81,18 @@ function CartProduct({
             onClick={() => {
               if (wishlist.some((item) => item.id === id)) {
                 console.log("item exists");
-                wishlistDispatch({
-                  type: "PRE_EXISTED_WISHLIST_ITEM",
-                  payload: title,
+                // wishlistDispatch({
+                //   type: "PRE_EXISTED_WISHLIST_ITEM",
+                //   payload: title,
+                // });
+                toast.info("Item already exists in  Wishlist", {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
                 });
               } else {
                 wishlistDispatch({
@@ -93,6 +105,15 @@ function CartProduct({
                     sellingPrice: sellingPrice,
                     amount: amount,
                   },
+                });
+                toast.info("Item added to  Wishlist", {
+                  position: "top-right",
+                  autoClose: 3000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
                 });
               }
             }}

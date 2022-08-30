@@ -2,6 +2,7 @@ import React from "react";
 import { useCart } from "../../contexts/cartContext";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 function WishlistProductCard({
   title,
   imageSource,
@@ -39,7 +40,17 @@ function WishlistProductCard({
           onClick={() => {
             if (cart.some((item) => item.id === id)) {
               removeFromWishlist(id);
-              dispatch({ type: "PRE_EXISTED_ITEM", payload: title });
+              // dispatch({ type: "PRE_EXISTED_ITEM", payload: title });
+
+              toast.info("Item already exists in Cart", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
             } else {
               removeFromWishlist(id);
               dispatch({
@@ -53,6 +64,15 @@ function WishlistProductCard({
                   amount: amount,
                 },
               });
+              toast.info("Item moved to Cart", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
             }
           }}
           className="btn btn-link wishlist-card-button"
@@ -62,6 +82,15 @@ function WishlistProductCard({
         <button
           onClick={() => {
             removeFromWishlist(id);
+            toast.info("Item removed from Wishlist", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
           }}
           className="btn btn-link wishlist-card-button"
         >

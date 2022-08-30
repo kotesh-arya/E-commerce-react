@@ -11,8 +11,9 @@ import { Modal } from "../../pages/Modal";
 import { useProducts } from "../../contexts/productContext";
 import { SuggestionCard } from "../ProductPage/SuggestionCard";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 function ProductPage() {
-  const { dispatch, isCartModalOpen, cart } = useCart();
+  const { dispatch, cart } = useCart();
   const { productId } = useParams();
   const { wishlist, wishlistDispatch, isModalOpen } = useWishlist();
   const [singleProduct, setSingleProduct] = useState({});
@@ -21,11 +22,9 @@ function ProductPage() {
   };
   const getSingleProduct = async () => {
     const response = await axios.get(`/api/products/${productId}`);
-    // console.log(response);
     setSingleProduct(response.data.product);
   };
   const { allProducts } = useProducts();
-  // console.log(data)
   const filteredProducts = allProducts.filter(
     (product) =>
       product._id !== singleProduct._id &&
@@ -33,12 +32,9 @@ function ProductPage() {
   );
   // console.log(filteredProducts);
   const suggestedProducts = filteredProducts.slice(0, 4);
-  const modalTimeout = setTimeout(() => {
-    wishlistDispatch({ type: "REMOVE_MODAL" });
-  }, 6000);
+
   useEffect(() => {
     getSingleProduct();
-    clearTimeout(modalTimeout);
   }, [productId]);
 
   return (
@@ -107,9 +103,18 @@ function ProductPage() {
                     console.log(
                       "item exists in cart increase it quantity there"
                     );
-                    dispatch({
-                      type: "PRE_EXISTED_ITEM",
-                      payload: singleProduct.title,
+                    // dispatch({
+                    //   type: "PRE_EXISTED_ITEM",
+                    //   payload: singleProduct.title,
+                    // });
+                    toast.info("Item already exists in Cart", {
+                      position: "top-right",
+                      autoClose: 3000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
                     });
                   } else {
                     console.log("add to cart!!");
@@ -126,6 +131,15 @@ function ProductPage() {
                         amount: singleProduct.amount,
                       },
                     });
+                    toast.info("Item added to Cart", {
+                      position: "top-right",
+                      autoClose: 3000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                    });
                   }
                 }}
               >
@@ -138,9 +152,18 @@ function ProductPage() {
                     console.log(
                       "item exists in wishlist, increase it quantity there"
                     );
-                    wishlistDispatch({
-                      type: "PRE_EXISTED_WISHLIST_ITEM",
-                      payload: singleProduct.title,
+                    // wishlistDispatch({
+                    //   type: "PRE_EXISTED_WISHLIST_ITEM",
+                    //   payload: singleProduct.title,
+                    // });
+                    toast.info("Item already exists in Wishlist", {
+                      position: "top-right",
+                      autoClose: 3000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
                     });
                   } else {
                     wishlistDispatch({
@@ -155,6 +178,15 @@ function ProductPage() {
                         instock: singleProduct.inStock,
                         amount: singleProduct.amount,
                       },
+                    });
+                    toast.info("Item added to Wishlist", {
+                      position: "top-right",
+                      autoClose: 3000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
                     });
                   }
                 }}

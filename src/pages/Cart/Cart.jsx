@@ -7,7 +7,8 @@ import { useCart } from "../../contexts/cartContext";
 import EmptyCartImage from "../Cart/empty-cart.png";
 import { useNavigate } from "react-router-dom";
 import { useWishlist } from "../../contexts/wishlistContext";
-import { Modal } from "../../pages/Modal";
+// import { Modal } from "../../pages/Modal";
+import { toast } from "react-toastify";
 function Cart() {
   const {
     cart,
@@ -18,10 +19,6 @@ function Cart() {
     dispatch,
   } = useCart();
   const { isWishlistModalOpen, wishlistDispatch } = useWishlist();
-  // const modalTimeout =
-  setTimeout(() => {
-    wishlistDispatch({ type: "REMOVE_MODAL" });
-  }, 6000);
 
   const loadScript = (src) => {
     return new Promise((resolve) => {
@@ -42,7 +39,15 @@ function Cart() {
       "https://checkout.razorpay.com/v1/checkout.js"
     );
     if (!response) {
-      alert("you are Offline 😢");
+      toast.warning("you are Offline 😢", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       return;
     }
     const options = {
@@ -53,10 +58,17 @@ function Cart() {
       Description: "Thanks for shopping",
       handler: function (response) {
         dispatch({ type: "PAYMENT_DONE" });
-        alert(response.razorpay_payment_id);
-        alert("payment Successfull");
+        // alert(response.razorpay_payment_id);
+        toast.success("payment Successfull", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       },
-      // if(response.razorpay_payment_id)
     };
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
@@ -154,7 +166,7 @@ function Cart() {
         </div>
       </div>
       {/* {is} */}
-      {isWishlistModalOpen && <Modal />}
+      {/* {isWishlistModalOpen && <Modal />} */}
     </div>
   );
 }

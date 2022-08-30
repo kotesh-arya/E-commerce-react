@@ -4,6 +4,8 @@ import { useCart } from "../../contexts/cartContext";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { HiShoppingCart } from "react-icons/hi";
 import { BsArrowRight } from "react-icons/bs";
+import { toast } from "react-toastify";
+
 function ProductlistCard({
   _id,
   title,
@@ -26,7 +28,18 @@ function ProductlistCard({
 
         {wishlist.some((item) => item.id === _id) ? (
           <i
-            onClick={() => dislike(_id)}
+            onClick={() => {
+              dislike(_id);
+              toast.info("Item removed from Wishlist", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
+            }}
             className="fa fa-heart fa-2x liked-heart "
             aria-hidden="true"
           ></i>
@@ -45,6 +58,16 @@ function ProductlistCard({
                   instock: inStock,
                   amount: amount,
                 },
+              });
+
+              toast.info("Item added to Wishlist", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
               });
             }}
             className="fa fa-heart fa-2x heart-icon "
@@ -101,6 +124,15 @@ function ProductlistCard({
                 instock: inStock,
                 amount: amount,
               },
+            });
+            toast.info("Item added to Cart", {
+              position: "top-right",
+              autoClose: 3000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
             });
           }}
         >

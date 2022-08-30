@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../../../contexts/cartContext";
 import { useWishlist } from "../../../../contexts/wishlistContext";
 import { useAuth } from "../../../../contexts/authContext";
+
 const NavBar = () => {
   const { amount } = useCart();
   const { wishlist } = useWishlist();
   const { userName, isLoggedIn } = useAuth();
+
   return (
     <div className="navigation-container flex-div">
       <div className="nav-left flex-div">
@@ -30,7 +32,9 @@ const NavBar = () => {
       </div>
 
       <div className="nav-right flex-div">
-        <h4> {isLoggedIn && `Hello ${userName} 👋`}</h4>
+        <Link className="user-title-link" to="/SignIn">
+          <h4> {isLoggedIn && `Hello ${userName} 👋`}</h4>
+        </Link>
         <nav className="main-links">
           <Link className="nav-icon-link" to="/WishList">
             <div className="nav-badge">

@@ -25,22 +25,23 @@ export const reducer = (state, action) => {
       wishlist: tempLikedItems,
     };
   }
-  if (action.type === "PRE_EXISTED_WISHLIST_ITEM") {
-    console.log(
-      "from wishlist reducer, preexisted whilist item operates here!!"
-    );
-    console.log(action.payload);
-    return {
-      ...state,
-      isWishlistModalOpen: true,
-      wishlistModalContent: `${action.payload} already exists in the Wishlist`,
-    };
-  }
-  if (action.type === "REMOVE_MODAL") {
-    return {
-      ...state,
-      isWishlistModalOpen: false,
-    };
-  }
+  // if (action.type === "PRE_EXISTED_WISHLIST_ITEM") {
+  //   console.log(
+  //     "from wishlist reducer, preexisted whilist item operates here!!"
+  //   );
+  //   console.log(action.payload);
+  //   return {
+  //     // ...state,
+  //     // isWishlistModalOpen: true,
+  //     // wishlistModalContent: `${action.payload} already exists in the Wishlist`,
+  //     state,
+  //   };
+  // }
+  // if (action.type === "REMOVE_MODAL") {
+  //   return {
+  //     ...state,
+  //     isWishlistModalOpen: false,
+  //   };
+  // }
   return state;
 };

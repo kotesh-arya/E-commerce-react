@@ -10,9 +10,23 @@ import { Routes, Route } from "react-router-dom";
 import { RequiresAuth } from "./RequiresAuth";
 import { NotFound } from "./pages/NotFound/NotFound";
 import { ProductPage } from "../src/pages/ProductPage/ProductPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const notify = () => {
+  toast("🦄 Wow so easy!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+};
 function App() {
   return (
     <div className="App">
+      <button onClick={notify}>Toast notify</button>
       <Routes>
         <Route path="/" element={<HomePage />}>
           Home
@@ -55,6 +69,7 @@ function App() {
           Product Page
         </Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }
