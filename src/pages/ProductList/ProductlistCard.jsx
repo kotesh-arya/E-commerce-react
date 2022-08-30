@@ -31,9 +31,9 @@ function ProductlistCard({
             onClick={() => {
               dislike(_id);
               toast.info("Item removed from Wishlist", {
-                position: "top-right",
+                position: "bottom-center",
                 autoClose: 3000,
-                hideProgressBar: false,
+                hideProgressBar: true,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
@@ -61,10 +61,10 @@ function ProductlistCard({
               });
 
               toast.info("Item added to Wishlist", {
-                position: "top-right",
+                position: "bottom-center",
                 autoClose: 3000,
                 hideProgressBar: false,
-                closeOnClick: true,
+                closeOnClick: false,
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
@@ -126,9 +126,9 @@ function ProductlistCard({
               },
             });
             toast.info("Item added to Cart", {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 3000,
-              hideProgressBar: false,
+              hideProgressBar: true,
               closeOnClick: true,
               pauseOnHover: true,
               draggable: true,

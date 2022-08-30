@@ -48,9 +48,9 @@ const AuthProvider = ({ children }) => {
 
           console.log(foundUser);
           toast.success("Succesfully Signed In!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 3000,
-            hideProgressBar: false,
+            hideProgressBar: true,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
@@ -61,9 +61,9 @@ const AuthProvider = ({ children }) => {
         dispatch({ type: "INVALID_USER_INPUT" });
         console.log(error);
         toast.warning(" User Not Found, Please SignUP", {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 3000,
-          hideProgressBar: false,
+          hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
@@ -93,9 +93,9 @@ const AuthProvider = ({ children }) => {
           console.log(createdUser);
           navigate("/");
           toast.success("Succesfully Signed Up & In!", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 3000,
-            hideProgressBar: false,
+            hideProgressBar: true,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
@@ -107,9 +107,9 @@ const AuthProvider = ({ children }) => {
         if (error.response.status === 422) {
           userDispatch({ type: "USER_ALREADY_EXISTS" });
           toast.warning("User Already Exists", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 3000,
-            hideProgressBar: false,
+            hideProgressBar: true,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
@@ -123,9 +123,9 @@ const AuthProvider = ({ children }) => {
     navigate("/");
     userDispatch({ type: "USER_LOGOUT" });
     toast.success("Logged OUT", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 3000,
-      hideProgressBar: false,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,

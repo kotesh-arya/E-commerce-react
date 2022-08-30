@@ -108,9 +108,9 @@ function ProductPage() {
                     //   payload: singleProduct.title,
                     // });
                     toast.info("Item already exists in Cart", {
-                      position: "top-right",
+                      position: "bottom-center",
                       autoClose: 3000,
-                      hideProgressBar: false,
+                      hideProgressBar: true,
                       closeOnClick: true,
                       pauseOnHover: true,
                       draggable: true,
@@ -132,9 +132,9 @@ function ProductPage() {
                       },
                     });
                     toast.info("Item added to Cart", {
-                      position: "top-right",
+                      position: "bottom-center",
                       autoClose: 3000,
-                      hideProgressBar: false,
+                      hideProgressBar: true,
                       closeOnClick: true,
                       pauseOnHover: true,
                       draggable: true,
@@ -157,9 +157,9 @@ function ProductPage() {
                     //   payload: singleProduct.title,
                     // });
                     toast.info("Item already exists in Wishlist", {
-                      position: "top-right",
+                      position: "bottom-center",
                       autoClose: 3000,
-                      hideProgressBar: false,
+                      hideProgressBar: true,
                       closeOnClick: true,
                       pauseOnHover: true,
                       draggable: true,
@@ -180,9 +180,9 @@ function ProductPage() {
                       },
                     });
                     toast.info("Item added to Wishlist", {
-                      position: "top-right",
+                      position: "bottom-center",
                       autoClose: 3000,
-                      hideProgressBar: false,
+                      hideProgressBar: true,
                       closeOnClick: true,
                       pauseOnHover: true,
                       draggable: true,

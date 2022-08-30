@@ -151,7 +151,6 @@ h4 {
   z-index: 1;
 }
 
-
 .product-container {
   display: flex;
   flex-flow: row wrap;
@@ -169,25 +168,27 @@ h4 {
   height: 2px;
   width: 85%;
   background-color: var(--grey);
- margin-left: 4rem;
+  margin-left: 4rem;
 }
 
 .card {
   margin: 1.5rem;
-  box-shadow: 3px 3px 10px var(--grey);
+  /* box-shadow: 3px 3px 10px var(--grey); */
   border-radius: 10px;
 }
 
 .badge-card {
   width: 20rem;
 }
-.link-card{
+.link-card {
   text-decoration: none;
 }
 .text-overlay-card {
   width: 20rem;
 }
-
+.absolute-positioned-text {
+  border-radius: 10px;
+}
 /* .product-label {
   padding: 1rem;
   height: 2rem;

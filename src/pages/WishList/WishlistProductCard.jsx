@@ -43,9 +43,9 @@ function WishlistProductCard({
               // dispatch({ type: "PRE_EXISTED_ITEM", payload: title });
 
               toast.info("Item already exists in Cart", {
-                position: "top-right",
+                position: "bottom-center",
                 autoClose: 3000,
-                hideProgressBar: false,
+                hideProgressBar: true,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
@@ -65,9 +65,9 @@ function WishlistProductCard({
                 },
               });
               toast.info("Item moved to Cart", {
-                position: "top-right",
+                position: "bottom-center",
                 autoClose: 3000,
-                hideProgressBar: false,
+                hideProgressBar: true,
                 closeOnClick: true,
                 pauseOnHover: true,
                 draggable: true,
@@ -83,9 +83,9 @@ function WishlistProductCard({
           onClick={() => {
             removeFromWishlist(id);
             toast.info("Item removed from Wishlist", {
-              position: "top-right",
+              position: "bottom-center",
               autoClose: 3000,
-              hideProgressBar: false,
+              hideProgressBar: true,
               closeOnClick: true,
               pauseOnHover: true,
               draggable: true,

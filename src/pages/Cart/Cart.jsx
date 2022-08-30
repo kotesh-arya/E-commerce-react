@@ -40,9 +40,9 @@ function Cart() {
     );
     if (!response) {
       toast.warning("you are Offline 😢", {
-        position: "top-right",
+        position: "bottom-center",
         autoClose: 3000,
-        hideProgressBar: false,
+        hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
@@ -60,9 +60,9 @@ function Cart() {
         dispatch({ type: "PAYMENT_DONE" });
         // alert(response.razorpay_payment_id);
         toast.success("payment Successfull", {
-          position: "top-right",
+          position: "bottom-center",
           autoClose: 3000,
-          hideProgressBar: false,
+          hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
@@ -90,7 +90,7 @@ function Cart() {
           {cart.length === 0 ? (
             <div className={CartCSS["empty-cart"]}>
               <h2>
-                IS EMPTY😢 <br /> GO AND ADD ITEMS
+                is empty😢 
               </h2>
 
               <img

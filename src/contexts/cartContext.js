@@ -17,9 +17,9 @@ const CartProvider = ({ children }) => {
   const remove = (id) => {
     dispatch({ type: "REMOVE_FROM_CART", payload: id });
     toast.info("Item removed from Cart", {
-      position: "top-right",
+      position: "bottom-center",
       autoClose: 3000,
-      hideProgressBar: false,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
