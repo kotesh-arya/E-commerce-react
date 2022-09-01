@@ -7,10 +7,6 @@ function Modal() {
   const { wishlistModalContent } = useWishlist();
   return (
     <div className="modal-container animate__animated animate__fadeInUp animate__slow">
-      {/* <h4>
-        {cartModalContent}
-        {wishlistModalContent}
-      </h4> */}
       {cartModalContent && <h4>{cartModalContent}</h4>}
       {wishlistModalContent && <h4>{wishlistModalContent}</h4>}
     </div>

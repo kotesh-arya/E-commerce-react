@@ -40,8 +40,6 @@ function WishlistProductCard({
           onClick={() => {
             if (cart.some((item) => item.id === id)) {
               removeFromWishlist(id);
-              // dispatch({ type: "PRE_EXISTED_ITEM", payload: title });
-
               toast.info("Item already exists in Cart", {
                 position: "bottom-center",
                 autoClose: 3000,

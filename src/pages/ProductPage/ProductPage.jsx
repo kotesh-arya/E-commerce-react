@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavBar } from "../HomePage/HomePageComponents/NavBar/NavBar";
 import ProductPageCSS from "../ProductPage/ProductPage.module.css";
-// import { useProducts } from "../../contexts/productContext";
-// import { IoMdArrowDropupCircle, IoMdArrowDropdownCircle } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useCart } from "../../contexts/cartContext";
@@ -30,7 +28,6 @@ function ProductPage() {
       product._id !== singleProduct._id &&
       product.productCategory === singleProduct.productCategory
   );
-  // console.log(filteredProducts);
   const suggestedProducts = filteredProducts.slice(0, 4);
 
   useEffect(() => {
@@ -49,11 +46,9 @@ function ProductPage() {
             />
           </div>
           <div className={ProductPageCSS["single-product-content"]}>
-            {/* <div className=" cart-card-title"> */}
             <h1 className={ProductPageCSS["product-title"]}>
               {singleProduct.title}
             </h1>
-            {/* </div> */}
             <div className={ProductPageCSS["product-rating"]}>
               {Array(singleProduct.rating)
                 .fill()
@@ -100,13 +95,6 @@ function ProductPage() {
                 className={`btn btn-primary ${ProductPageCSS["add-to-cart"]}`}
                 onClick={() => {
                   if (cart.some((item) => item.id === singleProduct._id)) {
-                    console.log(
-                      "item exists in cart increase it quantity there"
-                    );
-                    // dispatch({
-                    //   type: "PRE_EXISTED_ITEM",
-                    //   payload: singleProduct.title,
-                    // });
                     toast.info("Item already exists in Cart", {
                       position: "bottom-center",
                       autoClose: 3000,
@@ -117,7 +105,6 @@ function ProductPage() {
                       progress: undefined,
                     });
                   } else {
-                    console.log("add to cart!!");
                     dispatch({
                       type: "ADD_TO_CART",
                       item: {
@@ -149,13 +136,6 @@ function ProductPage() {
                 className={`btn btn-primary ${ProductPageCSS["product-button"]}`}
                 onClick={() => {
                   if (wishlist.some((item) => item.id === singleProduct._id)) {
-                    console.log(
-                      "item exists in wishlist, increase it quantity there"
-                    );
-                    // wishlistDispatch({
-                    //   type: "PRE_EXISTED_WISHLIST_ITEM",
-                    //   payload: singleProduct.title,
-                    // });
                     toast.info("Item already exists in Wishlist", {
                       position: "bottom-center",
                       autoClose: 3000,

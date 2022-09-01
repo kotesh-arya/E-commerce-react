@@ -7,7 +7,6 @@ import { useCart } from "../../contexts/cartContext";
 import EmptyCartImage from "../Cart/empty-cart.png";
 import { useNavigate } from "react-router-dom";
 import { useWishlist } from "../../contexts/wishlistContext";
-// import { Modal } from "../../pages/Modal";
 import { toast } from "react-toastify";
 function Cart() {
   const {
@@ -34,7 +33,6 @@ function Cart() {
     });
   };
   const displayRazorpay = async (amount) => {
-    console.log(" razorpay to be Displayed");
     const response = await loadScript(
       "https://checkout.razorpay.com/v1/checkout.js"
     );
@@ -89,9 +87,7 @@ function Cart() {
 
           {cart.length === 0 ? (
             <div className={CartCSS["empty-cart"]}>
-              <h2>
-                is empty😢 
-              </h2>
+              <h2>is empty😢</h2>
 
               <img
                 className={CartCSS["empty-cart-image"]}
@@ -165,8 +161,6 @@ function Cart() {
           )}
         </div>
       </div>
-      {/* {is} */}
-      {/* {isWishlistModalOpen && <Modal />} */}
     </div>
   );
 }

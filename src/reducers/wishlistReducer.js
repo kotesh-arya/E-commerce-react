@@ -1,6 +1,5 @@
 export const reducer = (state, action) => {
   if (action.type === "ADD_TO_WISHLIST") {
-    // console.log(action.item);
     return {
       ...state,
       wishlist: [...state.wishlist, action.item],
@@ -16,7 +15,6 @@ export const reducer = (state, action) => {
     };
   }
   if (action.type === "DISLIKE_ITEM") {
-    console.log("disliking works");
     const tempLikedItems = state.wishlist.filter((item) => {
       return item.id !== action.payload;
     });
@@ -25,23 +23,6 @@ export const reducer = (state, action) => {
       wishlist: tempLikedItems,
     };
   }
-  // if (action.type === "PRE_EXISTED_WISHLIST_ITEM") {
-  //   console.log(
-  //     "from wishlist reducer, preexisted whilist item operates here!!"
-  //   );
-  //   console.log(action.payload);
-  //   return {
-  //     // ...state,
-  //     // isWishlistModalOpen: true,
-  //     // wishlistModalContent: `${action.payload} already exists in the Wishlist`,
-  //     state,
-  //   };
-  // }
-  // if (action.type === "REMOVE_MODAL") {
-  //   return {
-  //     ...state,
-  //     isWishlistModalOpen: false,
-  //   };
-  // }
+
   return state;
 };

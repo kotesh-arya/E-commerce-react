@@ -20,10 +20,9 @@ const AuthProvider = ({ children }) => {
   };
   const [userState, userDispatch] = useReducer(reducer, intialState);
   const { dispatch } = useCart();
-  // Login Function
 
+  // Login Function
   const loginUser = async (email, password) => {
-    console.log(email, password);
     if (email !== "" && password !== "") {
       try {
         let response = await axios.post("/api/auth/login", {
@@ -34,7 +33,6 @@ const AuthProvider = ({ children }) => {
         const { data } = response;
         const { encodedToken, foundUser } = data;
 
-        console.log(encodedToken, foundUser);
         if (response.status === 200) {
           userDispatch({
             type: "UPDATE_TOKEN_AND_USER_DATA",
@@ -46,7 +44,6 @@ const AuthProvider = ({ children }) => {
             navigate("/ProductList");
           }
 
-          console.log(foundUser);
           toast.success("Succesfully Signed In!", {
             position: "bottom-center",
             autoClose: 3000,
@@ -59,7 +56,6 @@ const AuthProvider = ({ children }) => {
         }
       } catch (error) {
         dispatch({ type: "INVALID_USER_INPUT" });
-        console.log(error);
         toast.warning(" User Not Found, Please SignUP", {
           position: "bottom-center",
           autoClose: 3000,
@@ -90,7 +86,6 @@ const AuthProvider = ({ children }) => {
             type: "UPDATE_TOKEN_AND_USER_DATA",
             payload: { encodedToken, foundUser: createdUser },
           });
-          console.log(createdUser);
           navigate("/");
           toast.success("Succesfully Signed Up & In!", {
             position: "bottom-center",
@@ -103,7 +98,6 @@ const AuthProvider = ({ children }) => {
           });
         }
       } catch (error) {
-        console.log(error);
         if (error.response.status === 422) {
           userDispatch({ type: "USER_ALREADY_EXISTS" });
           toast.warning("User Already Exists", {

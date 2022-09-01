@@ -6,18 +6,15 @@ export const reducer = (state, action) => {
     };
   }
   if (action.type === "REMOVE_FROM_CART") {
-    console.log("removed cart item");
     const tempCart = state.cart.filter((item) => {
       return item.id !== action.payload;
     });
-    console.log(tempCart);
     return {
       ...state,
       cart: tempCart,
     };
   }
   if (action.type === "INCREASE_CART_ITEM") {
-    console.log(state.cart);
     const tempCart = state.cart.map((item) => {
       if (item.id === action.payload && item.amount <= 9) {
         return { ...item, amount: item.amount + 1 };
@@ -73,14 +70,7 @@ export const reducer = (state, action) => {
       cart: [...state.cart, action.item],
     };
   }
-  // if (action.type === "PRE_EXISTED_ITEM") {
-  //   console.log("item already exists in cart");
-  //   return {
-  //     ...state,
-  //     isCartModalOpen: true,
-  //     cartModalContent: `${action.payload} already exists in the CART`,
-  //   };
-  // }
+
   if (action.type === "INVALID_USER_INPUT") {
     return {
       ...state,

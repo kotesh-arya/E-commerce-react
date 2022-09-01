@@ -43,7 +43,6 @@
   flex-flow: row wrap;
   justify-content: space-evenly;
   padding: 0rem 5rem 4rem 5rem;
-  /* background-color: red; */
 }
 
 .btn-link {
@@ -68,7 +67,6 @@
   }
   .horizontal-card-content {
     width: 50%;
-    /* object-fit: cover; */
   }
   .trending-card-btn {
     width: 100%;
