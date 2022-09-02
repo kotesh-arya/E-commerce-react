@@ -1,11 +1,14 @@
 import React from "react";
 import "../pages/Modal.css";
 import { useCart } from "../contexts/cartContext";
+import { useWishlist } from "../contexts/wishlistContext";
 function Modal() {
-  const { modalContent } = useCart();
+  const { cartModalContent } = useCart();
+  const { wishlistModalContent } = useWishlist();
   return (
     <div className="modal-container animate__animated animate__fadeInUp animate__slow">
-      <h4>{modalContent}</h4>
+      {cartModalContent && <h4>{cartModalContent}</h4>}
+      {wishlistModalContent && <h4>{wishlistModalContent}</h4>}
     </div>
   );
 }

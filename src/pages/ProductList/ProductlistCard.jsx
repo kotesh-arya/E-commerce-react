@@ -4,6 +4,9 @@ import { useCart } from "../../contexts/cartContext";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { HiShoppingCart } from "react-icons/hi";
 import { BsArrowRight } from "react-icons/bs";
+import { toast } from "react-toastify";
+import { ADD_TO_CART } from "../../constants/cartStateConstants";
+import { ADD_TO_WISHLIST } from "../../constants/wishlistStateConstants";
 function ProductlistCard({
   _id,
   title,
@@ -22,11 +25,22 @@ function ProductlistCard({
   return (
     <div className="card badge-card">
       <div className="label-icon ">
-        <div className="label">NEW</div>
+        <div className="label">New</div>
 
         {wishlist.some((item) => item.id === _id) ? (
           <i
-            onClick={() => dislike(_id)}
+            onClick={() => {
+              dislike(_id);
+              toast.info("Item removed from Wishlist", {
+                position: "bottom-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
+            }}
             className="fa fa-heart fa-2x liked-heart "
             aria-hidden="true"
           ></i>
@@ -34,7 +48,7 @@ function ProductlistCard({
           <i
             onClick={() => {
               wishlistDispatch({
-                type: "ADD_TO_WISHLIST",
+                type: ADD_TO_WISHLIST,
                 item: {
                   id: _id,
                   title: title,
@@ -46,6 +60,16 @@ function ProductlistCard({
                   amount: amount,
                 },
               });
+
+              toast.info("Item added to Wishlist", {
+                position: "bottom-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
             }}
             className="fa fa-heart fa-2x heart-icon "
             aria-hidden="true"
@@ -54,7 +78,9 @@ function ProductlistCard({
       </div>
 
       <div className="card-image-container">
-        <img className="card-image" src={imageSource} alt="watch" />
+        <Link className="link-card" to={`/Product/${_id}`}>
+          <img className="card-image" src={imageSource} alt="watch" />
+        </Link>
       </div>
 
       <div className="card-content">
@@ -88,7 +114,7 @@ function ProductlistCard({
           className="btn btn-link card-button"
           onClick={() => {
             dispatch({
-              type: "ADD_TO_CART",
+              type: ADD_TO_CART,
               item: {
                 id: _id,
                 title: title,
@@ -99,6 +125,15 @@ function ProductlistCard({
                 instock: inStock,
                 amount: amount,
               },
+            });
+            toast.info("Item added to Cart", {
+              position: "bottom-center",
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
             });
           }}
         >

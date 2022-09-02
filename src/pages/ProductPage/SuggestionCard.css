@@ -1,0 +1,21 @@
+.suggestion-container {
+  background-color: var(--white);
+  border-radius: 10px;
+  padding-bottom: 1rem;
+}
+
+.suggestion-image-container {
+  padding-top: 1rem;
+  border-radius: 10px;
+  height: 18rem;
+  width: 18rem;
+  background-color: var(--white);
+}
+.suggestion-image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.suggestion-title {
+  margin-top: 1rem;
+}

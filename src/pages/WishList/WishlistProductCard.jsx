@@ -1,7 +1,9 @@
 import React from "react";
 import { useCart } from "../../contexts/cartContext";
 import { useWishlist } from "../../contexts/wishlistContext";
-
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { MOVE_TO_CART } from "../../constants/cartStateConstants";
 function WishlistProductCard({
   title,
   imageSource,
@@ -18,7 +20,9 @@ function WishlistProductCard({
   return (
     <div className="card badge-card">
       <div className="card-image-container">
-        <img className="card-image" src={imageSource} />
+        <Link to={`/Product/${id}`}>
+          <img className="card-image" src={imageSource} />
+        </Link>
       </div>
 
       <div className="card-content">
@@ -37,11 +41,19 @@ function WishlistProductCard({
           onClick={() => {
             if (cart.some((item) => item.id === id)) {
               removeFromWishlist(id);
-              dispatch({ type: "PRE_EXISTED_ITEM", payload: title });
+              toast.info("Item already exists in Cart", {
+                position: "bottom-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              });
             } else {
               removeFromWishlist(id);
               dispatch({
-                type: "MOVE_TO_CART",
+                type: MOVE_TO_CART,
                 item: {
                   id: id,
                   title: title,
@@ -50,6 +62,15 @@ function WishlistProductCard({
                   sellingPrice: sellingPrice,
                   amount: amount,
                 },
+              });
+              toast.info("Item moved to Cart", {
+                position: "bottom-center",
+                autoClose: 3000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
               });
             }
           }}
@@ -60,6 +81,15 @@ function WishlistProductCard({
         <button
           onClick={() => {
             removeFromWishlist(id);
+            toast.info("Item removed from Wishlist", {
+              position: "bottom-center",
+              autoClose: 3000,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
           }}
           className="btn btn-link wishlist-card-button"
         >

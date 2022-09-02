@@ -8,18 +8,18 @@ import { v4 as uuid } from "uuid";
 export const trending = [
   {
     _id: uuid(),
-    trendingTitle: "Sherlock's Hat",
+    trendingTitle: "GEAR Leather Bag",
     imageSource:
-      "https://e-commerce-daily-fashion-static.netlify.app/Components/Homepage/HomePage-assets/trending-image-sherlock-cap.jpg",
+      "https://rukminim1.flixcart.com/image/580/696/klv7ekw0/backpack/s/t/4/classic-anti-theft-faux-leather-lbpclslth1901-laptop-backpack-original-imagyw7gt2xmqyz5.jpeg?q=50",
     description:
-      "Transform yourself into a detective look with this Sherlock's Hat.By the comfort you get in this winter, you can pull out your style with a lengthy coat.",
+      "Gear-up your fashion to a Rugged look with this leather bag from GEAR",
   },
   {
     _id: uuid(),
-    trendingTitle: "Johnny depp scarf",
+    trendingTitle: "DealsForYou Sneakers",
     imageSource:
-      "https://e-commerce-daily-fashion-static.netlify.app/Components/Homepage/HomePage-assets/trending-image-scarf.jpg",
+      "https://i5.walmartimages.com/asr/e77c9229-3aa5-447c-91f7-c11a36755d89_1.e58f8839e0875efb2ff19c39a54affee.jpeg",
     description:
-      "The best companion for this freezing winter, which gives you a rugged look from out side and cozy warm feel from inside. Be a Double-game player.",
+      "The best companion for your Feet, which gives you a ultra-stylish look",
   },
 ];

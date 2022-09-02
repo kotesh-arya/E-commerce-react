@@ -3,6 +3,15 @@ import "../ProductList.css";
 import { useProductsFilter } from "../../../contexts/filtersContext";
 import { Link, NavLink } from "react-router-dom";
 import { useCategories } from "../../../contexts/categoryContext";
+import {
+  CLEAR_FILTERS,
+  RATING,
+  MEN,
+  WOMEN,
+  FREE_DELIVERY,
+  SORT,
+  IN_STOCK,
+} from "../../../constants/filterStateConstants";
 const Filters = () => {
   const { state, dispatch } = useProductsFilter();
 
@@ -21,14 +30,17 @@ const Filters = () => {
       <div className="filters-container">
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="filter-header">
-            <h2>Filters</h2>
+            <h3>Filters</h3>
             <button
-              className="btn btn-primary"
+              className="btn clear-btn"
               onClick={() => {
-                dispatch({ type: "CLEAR_FILTERS" });
+                dispatch({ type: CLEAR_FILTERS });
               }}
             >
-              <Link to="/ProductList"> CLEAR</Link>
+              <Link to="/ProductList">
+                {" "}
+                <span>CLEAR</span>
+              </Link>
             </button>
           </div>
 
@@ -74,7 +86,7 @@ const Filters = () => {
                 value={minRating}
                 className="slider"
                 onChange={(e) => {
-                  dispatch({ type: "RATING", payload: e.target.value });
+                  dispatch({ type: RATING, payload: e.target.value });
                 }}
               />
             </div>
@@ -91,7 +103,7 @@ const Filters = () => {
                 type="checkbox"
                 checked={menChecked}
                 onChange={() => {
-                  dispatch({ type: "MEN" });
+                  dispatch({ type: MEN });
                 }}
               />
               <label htmlFor="category-check-men">Men's Fashion</label>
@@ -105,7 +117,7 @@ const Filters = () => {
                 type="checkbox"
                 checked={womenChecked}
                 onChange={() => {
-                  dispatch({ type: "WOMEN" });
+                  dispatch({ type: WOMEN });
                 }}
               />
               <label htmlFor="category-check-women">Women's Fashion</label>
@@ -121,7 +133,7 @@ const Filters = () => {
                 type="checkbox"
                 checked={deliveryChecked}
                 onChange={() => {
-                  dispatch({ type: "FREE_DELIVERY" });
+                  dispatch({ type: FREE_DELIVERY });
                 }}
               />
               <label htmlFor="category-check-delivery">Free Delivery</label>
@@ -138,7 +150,7 @@ const Filters = () => {
                 type="checkbox"
                 checked={stockChecked}
                 onChange={() => {
-                  dispatch({ type: "IN_STOCK" });
+                  dispatch({ type: IN_STOCK });
                 }}
               />
               <label htmlFor="category-check-delivery">In Stock</label>
@@ -154,7 +166,7 @@ const Filters = () => {
                 id="decrease"
                 checked={sortBy && sortBy === "HIGH_TO_LOW"}
                 onChange={() => {
-                  dispatch({ type: "SORT", payload: "HIGH_TO_LOW" });
+                  dispatch({ type: SORT, payload: "HIGH_TO_LOW" });
                 }}
               />{" "}
               <label htmlFor="increase">High to Low</label>
@@ -166,29 +178,30 @@ const Filters = () => {
                 id="increase"
                 checked={sortBy && sortBy === "LOW_TO_HIGH"}
                 onChange={() => {
-                  dispatch({ type: "SORT", payload: "LOW_TO_HIGH" });
+                  dispatch({ type: SORT, payload: "LOW_TO_HIGH" });
                 }}
               />{" "}
               <label htmlFor="decrease">Low to High</label>
             </li>
           </ul>
 
-          <div className="category-container-col">
+          <div className="product-category-col">
             <h4>Product Categories</h4>
-
-            {categories.map((category) => {
-              return (
-                <NavLink
-                  className={({ isActive }) => {
-                    return isActive ? "inner-page-link" : "";
-                  }}
-                  key={category._id}
-                  to={`/ProductList/${category.categoryName}`}
-                >
-                  <p>{category.categoryName.toLowerCase()}</p>
-                </NavLink>
-              );
-            })}
+            <div className="product-category-grid">
+              {categories.map((category) => {
+                return (
+                  <NavLink
+                    className={({ isActive }) => {
+                      return isActive ? "inner-page-link" : "";
+                    }}
+                    key={category._id}
+                    to={`/ProductList/${category.categoryName}`}
+                  >
+                    <p>{category.categoryName}</p>
+                  </NavLink>
+                );
+              })}
+            </div>
           </div>
         </form>
       </div>

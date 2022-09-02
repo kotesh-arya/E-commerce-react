@@ -9,6 +9,10 @@ import { UserInfo } from "./pages/UserInfo/UserInfo";
 import { Routes, Route } from "react-router-dom";
 import { RequiresAuth } from "./RequiresAuth";
 import { NotFound } from "./pages/NotFound/NotFound";
+import { ProductPage } from "../src/pages/ProductPage/ProductPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   return (
     <div className="App">
@@ -50,7 +54,11 @@ function App() {
           Sign In
         </Route>
         <Route path="*" element={<NotFound />} />
+        <Route path="/Product/:productId" element={<ProductPage />}>
+          Product Page
+        </Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

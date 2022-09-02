@@ -8,6 +8,7 @@ import "../ProductList/ProductList.css";
 import { useParams } from "react-router-dom";
 import { useProducts } from "../../contexts/productContext";
 import { useProductsFilter } from "../../contexts/filtersContext";
+
 import {
   setRating,
   toggleMenCategory,
@@ -19,9 +20,8 @@ import {
 
 function ProductList() {
   const params = useParams();
-  console.log(params.category);
   const { allProducts } = useProducts();
-
+  const shuffledProducts = allProducts?.sort(() => 0.5 - Math.random());
   const { state } = useProductsFilter();
 
   const {
@@ -32,7 +32,7 @@ function ProductList() {
     stockChecked,
     sortBy,
   } = state;
-  const categorisedProducts = allProducts.filter((product) => {
+  const categorisedProducts = shuffledProducts.filter((product) => {
     return params.category
       ? product.productCategory?.toLowerCase() === params.category.toLowerCase()
       : true;
@@ -64,8 +64,10 @@ function ProductList() {
       <div className="wrapper">
         <Filters />
         <div className="product-section">
-          <h1 className="header-large product-header">Showing All Products</h1>
-
+          <h1 className="header-large product-header">
+            Showing {finalFilteredProducts.length} Products
+          </h1>
+          <hr />
           <div className="product-container">
             {finalFilteredProducts.map((product) => {
               if (product.inStock) {

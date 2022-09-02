@@ -30,9 +30,8 @@ body {
 }
 
 .cart-product-image {
-  height: 13rem;
-  width: auto;
-  object-fit: cover;
+  width: 100%;
+  object-fit: contain;
 }
 
 .cart-price-detail-card {
@@ -72,6 +71,9 @@ body {
   text-align: center;
   font-size: var(--meduim-font-size);
   padding: 1.5rem 0.5rem 0 0.5rem;
+}
+.saved-price{
+  color: var(--primary-color);
 }
 
 .place-order-btn {
@@ -143,6 +145,26 @@ body {
   width: 50%;
   margin: 10px 10px;
 }
+.empty-cart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.explore-btn {
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-weight: 600;
+  border: none;
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  right: 0;
+}
 .empty-cart-image {
-  width: 25rem;
+  width: 23rem;
+  margin-right: 4rem;
 }

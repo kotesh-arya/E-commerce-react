@@ -10,26 +10,30 @@
   width: 100%;
   z-index: 100;
   top: 0;
+  box-shadow: 0px 0px 10px 3px var(--grey);
 }
 
 .site-logo {
-  width: 12rem; 
+  width: 12rem;
 }
 
 .header-shop-link {
   text-decoration: none;
-  color: var(--black);
+  color: var(--primary-color);
+  border: 2.5px solid var(--primary-color);
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .header-shop-link:hover {
-  color: var(--primary-color);
+  color: var(--white);
+  background-color: var(--primary-color);
+  transition: 0.2s;
 }
-.nav-left{
+.nav-left {
   width: 30%;
-
-}
-.nav-right{
-  width: 20%;
 }
 
 .input-icon {
@@ -38,14 +42,6 @@
   padding: 5px;
   font-size: 1.8rem;
   color: var(--fa-primary-color);
-}
-
-.header-input {
-  padding: 9px;
-  width: 90%;
-  border-radius: 5px;
-  border: 2px solid var(--grey);
-  font-size: var(--medium-font-size);
 }
 
 .basic {
@@ -70,14 +66,6 @@
   text-align: center;
 }
 
-.social-icons {
-  font-size: 2.1rem;
-}
-
-nav ul li {
-  display: inline-block;
-  margin: 2px;
-}
 
 .main-links {
   display: flex;
@@ -92,6 +80,10 @@ nav ul li {
 .nav-icon-link {
   text-decoration: none;
 }
+.user-title-link {
+  text-decoration: none;
+  color: var(--black);
+}
 
 .header-icon {
   margin: 0.5rem;
@@ -102,4 +94,28 @@ nav ul li {
 
 .header-icon:hover {
   color: var(--primary-color);
+}
+@media screen and (max-width: 450px) {
+  .header-shop-link {
+    display: none;
+  }
+}
+@media screen and (max-width: 570px) {
+  .number-one {
+    height: 0.9rem;
+    width: 0.9rem;
+    top: -4px;
+    left: 0.8rem;
+    border-radius: 50%;
+    position: absolute;
+    font-size: 7px;
+  }
+  .header-icon {
+    margin: 2px;
+    padding: 2px;
+    font-size: 1rem;
+  }
+  .header-shop-link {
+    display: none;
+  }
 }

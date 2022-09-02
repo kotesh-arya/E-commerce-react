@@ -3,6 +3,12 @@ import { useContext, createContext, useReducer } from "react";
 import { reducer } from "../reducers/authReducer";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useCart } from "./cartContext";
+import { toast } from "react-toastify";
+import {
+  UPDATE_TOKEN_AND_USER_DATA,
+  USER_ALREADY_EXISTS,
+  USER_LOGOUT,
+} from "../constants/authStateConstants";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -18,10 +24,9 @@ const AuthProvider = ({ children }) => {
   };
   const [userState, userDispatch] = useReducer(reducer, intialState);
   const { dispatch } = useCart();
-  // Login Function
 
+  // Login Function
   const loginUser = async (email, password) => {
-    console.log(email, password);
     if (email !== "" && password !== "") {
       try {
         let response = await axios.post("/api/auth/login", {
@@ -32,10 +37,9 @@ const AuthProvider = ({ children }) => {
         const { data } = response;
         const { encodedToken, foundUser } = data;
 
-        console.log(encodedToken, foundUser);
         if (response.status === 200) {
           userDispatch({
-            type: "UPDATE_TOKEN_AND_USER_DATA",
+            type: UPDATE_TOKEN_AND_USER_DATA,
             payload: { encodedToken, foundUser },
           });
           if (location.state) {
@@ -44,13 +48,37 @@ const AuthProvider = ({ children }) => {
             navigate("/ProductList");
           }
 
-          localStorage.setItem("JWT_TOKEN", encodedToken);
-          console.log(foundUser);
+          toast.success("Succesfully Signed In!", {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       } catch (error) {
-        dispatch({ type: "INVALID_USER_INPUT" });
-        console.log(error);
+        toast.warning("Wrong credentials,Try Again", {
+          position: "bottom-center",
+          autoClose: 3000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       }
+    } else {
+      toast.warning(" Please enter valid Inputs", {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   // Sign up Function
@@ -68,24 +96,58 @@ const AuthProvider = ({ children }) => {
           const { data } = response;
           const { encodedToken, createdUser } = data;
           userDispatch({
-            type: "UPDATE_TOKEN_AND_USER_DATA",
+            type: UPDATE_TOKEN_AND_USER_DATA,
             payload: { encodedToken, foundUser: createdUser },
           });
-          console.log(createdUser);
           navigate("/");
-          localStorage.setItem("JWT_TOKEN", encodedToken);
+          toast.success("Succesfully Signed Up & In!", {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       } catch (error) {
-        console.log(error);
         if (error.response.status === 422) {
-          userDispatch({ type: "USER_ALREADY_EXISTS" });
+          userDispatch({ type: USER_ALREADY_EXISTS });
+          toast.warning("User Already Exists", {
+            position: "bottom-center",
+            autoClose: 3000,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         }
       }
+    } else {
+      toast.warning(" Please enter valid Inputs", {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   const logoutUser = () => {
     navigate("/");
-    userDispatch({ type: "USER_LOGOUT" });
+    userDispatch({ type: USER_LOGOUT });
+    toast.success("Logged OUT", {
+      position: "bottom-center",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
   return (
     <AuthContext.Provider
