@@ -6,11 +6,13 @@ import { UserInfo } from "../UserInfo/UserInfo";
 import SignInCSS from "../SignIn/SignIn.module.css";
 import { useAuth } from "../../contexts/authContext";
 import { useCart } from "../../contexts/cartContext";
+import { UPDATE_USER_DATA } from "../../constants/authStateConstants";
+import {REMOVE_MODAL} from "../../constants/cartStateConstants"
 function SignIn() {
   const { loginUser, userDispatch, isLoggedIn } = useAuth();
   const { isModalOpen, dispatch } = useCart();
   setTimeout(() => {
-    dispatch({ type: "REMOVE_MODAL" });
+    dispatch({ type: REMOVE_MODAL });
   }, 10000);
   const [formData, setFormData] = useState({
     email: "",
@@ -64,16 +66,14 @@ function SignIn() {
           <button
             className={`btn btn-primary ${SignInCSS["login-btn"]}`}
             onClick={() => {
-              if (formData.email !== "" && formData.password !== "") {
-                loginUser(formData.email, formData.password);
-                userDispatch({
-                  type: "UPDATE_USER_DATA",
-                  payload: {
-                    email: formData.email,
-                    password: formData.password,
-                  },
-                });
-              }
+              loginUser(formData.email, formData.password);
+              userDispatch({
+                type: UPDATE_USER_DATA,
+                payload: {
+                  email: formData.email,
+                  password: formData.password,
+                },
+              });
             }}
           >
             LOG IN
@@ -81,13 +81,18 @@ function SignIn() {
           <button
             className={`btn btn-primary ${SignInCSS["login-btn"]}`}
             onClick={() => {
-              if (formData.email === "" && formData.password === "") {
-                loginUser("test@gmail.com", "test@123");
-                userDispatch({
-                  type: "UPDATE_USER_DATA",
-                  payload: { email: "test@gmail.com", password: "test@123" },
-                });
-              }
+              loginUser("test@gmail.com", "test@123");
+              userDispatch({
+                type: UPDATE_USER_DATA,
+                payload: { email: "test@gmail.com", password: "test@123" },
+              });
+              setFormData((prevData) => {
+                return {
+                  ...prevData,
+                  email: "test@gmail.com",
+                  password: "test@123",
+                };
+              });
             }}
           >
             Log In with test credentials

@@ -3,6 +3,7 @@ import { useCart } from "../../contexts/cartContext";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { MOVE_TO_CART } from "../../constants/cartStateConstants";
 function WishlistProductCard({
   title,
   imageSource,
@@ -52,7 +53,7 @@ function WishlistProductCard({
             } else {
               removeFromWishlist(id);
               dispatch({
-                type: "MOVE_TO_CART",
+                type: MOVE_TO_CART,
                 item: {
                   id: id,
                   title: title,

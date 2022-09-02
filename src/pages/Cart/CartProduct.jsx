@@ -6,6 +6,7 @@ import { useCart } from "../../contexts/cartContext";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { ADD_TO_WISHLIST } from "../../constants/wishlistStateConstants";
 function CartProduct({
   imageSource,
   title,
@@ -91,7 +92,7 @@ function CartProduct({
                 });
               } else {
                 wishlistDispatch({
-                  type: "ADD_TO_WISHLIST",
+                  type: ADD_TO_WISHLIST,
                   item: {
                     id: id,
                     title: title,

@@ -5,7 +5,8 @@ import { useWishlist } from "../../contexts/wishlistContext";
 import { HiShoppingCart } from "react-icons/hi";
 import { BsArrowRight } from "react-icons/bs";
 import { toast } from "react-toastify";
-
+import { ADD_TO_CART } from "../../constants/cartStateConstants";
+import { ADD_TO_WISHLIST } from "../../constants/wishlistStateConstants";
 function ProductlistCard({
   _id,
   title,
@@ -47,7 +48,7 @@ function ProductlistCard({
           <i
             onClick={() => {
               wishlistDispatch({
-                type: "ADD_TO_WISHLIST",
+                type: ADD_TO_WISHLIST,
                 item: {
                   id: _id,
                   title: title,
@@ -113,7 +114,7 @@ function ProductlistCard({
           className="btn btn-link card-button"
           onClick={() => {
             dispatch({
-              type: "ADD_TO_CART",
+              type: ADD_TO_CART,
               item: {
                 id: _id,
                 title: title,

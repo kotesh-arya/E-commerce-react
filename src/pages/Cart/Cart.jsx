@@ -8,6 +8,7 @@ import EmptyCartImage from "../Cart/empty-cart.png";
 import { useNavigate } from "react-router-dom";
 import { useWishlist } from "../../contexts/wishlistContext";
 import { toast } from "react-toastify";
+import { PAYMENT_DONE } from "../../constants/cartStateConstants";
 function Cart() {
   const {
     cart,
@@ -55,7 +56,7 @@ function Cart() {
       name: "Daily fashion INC",
       Description: "Thanks for shopping",
       handler: function (response) {
-        dispatch({ type: "PAYMENT_DONE" });
+        dispatch({ type: PAYMENT_DONE });
         // alert(response.razorpay_payment_id);
         toast.success("payment Successfull", {
           position: "bottom-center",

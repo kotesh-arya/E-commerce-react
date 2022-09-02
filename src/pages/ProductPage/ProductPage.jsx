@@ -10,6 +10,8 @@ import { useProducts } from "../../contexts/productContext";
 import { SuggestionCard } from "../ProductPage/SuggestionCard";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { ADD_TO_CART } from "../../constants/cartStateConstants";
+import { ADD_TO_WISHLIST } from "../../constants/wishlistStateConstants";
 function ProductPage() {
   const { dispatch, cart } = useCart();
   const { productId } = useParams();
@@ -106,7 +108,7 @@ function ProductPage() {
                     });
                   } else {
                     dispatch({
-                      type: "ADD_TO_CART",
+                      type: ADD_TO_CART,
                       item: {
                         id: singleProduct._id,
                         title: singleProduct.title,
@@ -147,7 +149,7 @@ function ProductPage() {
                     });
                   } else {
                     wishlistDispatch({
-                      type: "ADD_TO_WISHLIST",
+                      type: ADD_TO_WISHLIST,
                       item: {
                         id: singleProduct._id,
                         title: singleProduct.title,

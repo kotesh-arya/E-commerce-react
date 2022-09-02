@@ -1,7 +1,12 @@
 import { useContext, createContext, useReducer, useEffect } from "react";
 import { reducer } from "../reducers/cartReducer";
 import { toast } from "react-toastify";
-
+import {
+  REMOVE_FROM_CART,
+  INCREASE_CART_ITEM,
+  DECREASE_CART_ITEM,
+  GET_TOTALS,
+} from "../constants/cartStateConstants";
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
@@ -15,7 +20,7 @@ const CartProvider = ({ children }) => {
     cartModalContent: "",
   };
   const remove = (id) => {
-    dispatch({ type: "REMOVE_FROM_CART", payload: id });
+    dispatch({ type: REMOVE_FROM_CART, payload: id });
     toast.info("Item removed from Cart", {
       position: "bottom-center",
       autoClose: 3000,
@@ -27,15 +32,15 @@ const CartProvider = ({ children }) => {
     });
   };
   const increase = (id) => {
-    dispatch({ type: "INCREASE_CART_ITEM", payload: id });
+    dispatch({ type: INCREASE_CART_ITEM, payload: id });
   };
   const decrease = (id) => {
-    dispatch({ type: "DECREASE_CART_ITEM", payload: id });
+    dispatch({ type: DECREASE_CART_ITEM, payload: id });
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
   useEffect(() => {
-    dispatch({ type: "GET_TOTALS" });
+    dispatch({ type: GET_TOTALS });
   }, [state.cart]);
   return (
     <CartContext.Provider

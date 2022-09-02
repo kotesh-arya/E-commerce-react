@@ -1,28 +1,33 @@
-export const reducer = (state, action) => {
-  if (action.type === "ADD_TO_WISHLIST") {
-    return {
-      ...state,
-      wishlist: [...state.wishlist, action.item],
-    };
-  }
-  if (action.type === "REMOVE_FROM_WISHLIST") {
-    const tempWishlist = state.wishlist.filter((item) => {
-      return item.id !== action.payload;
-    });
-    return {
-      ...state,
-      wishlist: tempWishlist,
-    };
-  }
-  if (action.type === "DISLIKE_ITEM") {
-    const tempLikedItems = state.wishlist.filter((item) => {
-      return item.id !== action.payload;
-    });
-    return {
-      ...state,
-      wishlist: tempLikedItems,
-    };
-  }
+import {
+  ADD_TO_WISHLIST,
+  REMOVE_FROM_WISHLIST,
+  DISLIKE_ITEM,
+} from "../constants/wishlistStateConstants";
 
-  return state;
+export const reducer = (state, action) => {
+  switch (action.type) {
+    case ADD_TO_WISHLIST:
+      return {
+        ...state,
+        wishlist: [...state.wishlist, action.item],
+      };
+
+    case REMOVE_FROM_WISHLIST:
+      const tempWishlist = state.wishlist.filter((item) => {
+        return item.id !== action.payload;
+      });
+      return {
+        ...state,
+        wishlist: tempWishlist,
+      };
+
+    case DISLIKE_ITEM:
+      const tempLikedItems = state.wishlist.filter((item) => {
+        return item.id !== action.payload;
+      });
+      return {
+        ...state,
+        wishlist: tempLikedItems,
+      };
+  }
 };

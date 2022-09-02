@@ -4,7 +4,11 @@ import { reducer } from "../reducers/authReducer";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useCart } from "./cartContext";
 import { toast } from "react-toastify";
-
+import {
+  UPDATE_TOKEN_AND_USER_DATA,
+  USER_ALREADY_EXISTS,
+  USER_LOGOUT,
+} from "../constants/authStateConstants";
 const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -35,7 +39,7 @@ const AuthProvider = ({ children }) => {
 
         if (response.status === 200) {
           userDispatch({
-            type: "UPDATE_TOKEN_AND_USER_DATA",
+            type: UPDATE_TOKEN_AND_USER_DATA,
             payload: { encodedToken, foundUser },
           });
           if (location.state) {
@@ -55,8 +59,7 @@ const AuthProvider = ({ children }) => {
           });
         }
       } catch (error) {
-        dispatch({ type: "INVALID_USER_INPUT" });
-        toast.warning(" User Not Found, Please SignUP", {
+        toast.warning("Wrong credentials,Try Again", {
           position: "bottom-center",
           autoClose: 3000,
           hideProgressBar: true,
@@ -66,6 +69,16 @@ const AuthProvider = ({ children }) => {
           progress: undefined,
         });
       }
+    } else {
+      toast.warning(" Please enter valid Inputs", {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   // Sign up Function
@@ -83,7 +96,7 @@ const AuthProvider = ({ children }) => {
           const { data } = response;
           const { encodedToken, createdUser } = data;
           userDispatch({
-            type: "UPDATE_TOKEN_AND_USER_DATA",
+            type: UPDATE_TOKEN_AND_USER_DATA,
             payload: { encodedToken, foundUser: createdUser },
           });
           navigate("/");
@@ -99,7 +112,7 @@ const AuthProvider = ({ children }) => {
         }
       } catch (error) {
         if (error.response.status === 422) {
-          userDispatch({ type: "USER_ALREADY_EXISTS" });
+          userDispatch({ type: USER_ALREADY_EXISTS });
           toast.warning("User Already Exists", {
             position: "bottom-center",
             autoClose: 3000,
@@ -111,11 +124,21 @@ const AuthProvider = ({ children }) => {
           });
         }
       }
+    } else {
+      toast.warning(" Please enter valid Inputs", {
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   const logoutUser = () => {
     navigate("/");
-    userDispatch({ type: "USER_LOGOUT" });
+    userDispatch({ type: USER_LOGOUT });
     toast.success("Logged OUT", {
       position: "bottom-center",
       autoClose: 3000,

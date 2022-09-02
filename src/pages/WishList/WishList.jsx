@@ -7,11 +7,12 @@ import { useWishlist } from "../../contexts/wishlistContext";
 import { useCart } from "../../contexts/cartContext";
 import EmptyWishlistImage from "../WishList/empty-wishlist.png";
 import { useNavigate } from "react-router-dom";
+import { REMOVE_MODAL } from "../../constants/cartStateConstants";
 function WishList() {
   const { wishlist } = useWishlist();
   const { isCartModalOpen, dispatch } = useCart();
   setTimeout(() => {
-    dispatch({ type: "REMOVE_MODAL" });
+    dispatch({ type: REMOVE_MODAL });
   }, 6000);
   const navigate = useNavigate();
   return (
@@ -23,7 +24,14 @@ function WishList() {
             <img className="wishlist-image" src={EmptyWishlistImage} alt="" />
             <div>
               <h2> WISHLIST IS EMPTY, PLEASE ADD ITEMS OF YOUR WISH 😎</h2>
-              <button className="shop-now-btn" onClick={()=>{navigate("/Productlist")}}>BACK TO PRODUCTS</button>
+              <button
+                className="shop-now-btn"
+                onClick={() => {
+                  navigate("/Productlist");
+                }}
+              >
+                BACK TO PRODUCTS
+              </button>
             </div>
           </div>
         ) : (
