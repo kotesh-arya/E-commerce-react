@@ -14,7 +14,7 @@ function Footer() {
           </a>
           <a
             className="footer-icon-link"
-            href="https://twitter.com/Kotesh_Mudila"
+            href="https://twitter.com/Codesh_"
           >
             <FaTwitter className="main-footer-icon" />
           </a>
