@@ -58,12 +58,10 @@
 }
 @media screen and (max-width: 584px) {
   .trending {
-    background-color: pink;
     padding: 1rem;
   }
   .horizontal-card {
     width: 100%;
-    background-color: red;
   }
   .horizontal-card-content {
     width: 50%;
