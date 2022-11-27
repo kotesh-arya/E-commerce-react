@@ -169,7 +169,7 @@ const Filters = () => {
                   dispatch({ type: SORT, payload: "HIGH_TO_LOW" });
                 }}
               />{" "}
-              <label htmlFor="increase">High to Low</label>
+              <label htmlFor="decrease">High to Low</label>
             </li>
             <li className="sorting-item">
               <input
@@ -181,7 +181,7 @@ const Filters = () => {
                   dispatch({ type: SORT, payload: "LOW_TO_HIGH" });
                 }}
               />{" "}
-              <label htmlFor="decrease">Low to High</label>
+              <label htmlFor="increase">Low to High</label>
             </li>
           </ul>
 
