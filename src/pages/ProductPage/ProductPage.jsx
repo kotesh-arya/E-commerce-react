@@ -12,7 +12,10 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ADD_TO_CART } from "../../constants/cartStateConstants";
 import { ADD_TO_WISHLIST } from "../../constants/wishlistStateConstants";
+import { useAuth } from "../../contexts/authContext";
+
 function ProductPage() {
+  const { isLoggedIn } = useAuth();
   const { dispatch, cart } = useCart();
   const { productId } = useParams();
   const { wishlist, wishlistDispatch, isModalOpen } = useWishlist();
@@ -27,8 +30,8 @@ function ProductPage() {
   const { allProducts } = useProducts();
   const filteredProducts = allProducts.filter(
     (product) =>
-      product._id !== singleProduct._id &&
-      product.productCategory === singleProduct.productCategory
+      product._id !== singleProduct?._id &&
+      product.productCategory === singleProduct?.productCategory
   );
   const suggestedProducts = filteredProducts.slice(0, 4);
 
@@ -44,15 +47,15 @@ function ProductPage() {
           <div className={ProductPageCSS["product-image-container"]}>
             <img
               className={ProductPageCSS["product-image"]}
-              src={singleProduct.imageSource}
+              src={singleProduct?.imageSource}
             />
           </div>
           <div className={ProductPageCSS["single-product-content"]}>
             <h1 className={ProductPageCSS["product-title"]}>
-              {singleProduct.title}
+              {singleProduct?.title}
             </h1>
             <div className={ProductPageCSS["product-rating"]}>
-              {Array(singleProduct.rating)
+              {Array(singleProduct?.rating)
                 .fill()
                 .map((_, index) => (
                   <p key={index}>⭐</p>
@@ -60,10 +63,10 @@ function ProductPage() {
             </div>
             <div className={ProductPageCSS["product-price-details"]}>
               <h2>
-                Rs.{singleProduct.sellingPrice}{" "}
+                Rs.{singleProduct?.sellingPrice}{" "}
                 <strike>
                   <span className={ProductPageCSS["light-text"]}>
-                    Rs.{singleProduct.listedPrice}
+                    Rs.{singleProduct?.listedPrice}
                   </span>
                 </strike>{" "}
               </h2>
@@ -71,8 +74,8 @@ function ProductPage() {
                 (
                 {Math.round(
                   calculateDiscount(
-                    singleProduct.listedPrice,
-                    singleProduct.sellingPrice
+                    singleProduct?.listedPrice,
+                    singleProduct?.sellingPrice
                   )
                 )}
                 % OFF)
@@ -93,88 +96,108 @@ function ProductPage() {
               </p>
             </div>
             <div className={ProductPageCSS["product-content-buttons"]}>
-              <button
-                className={`btn btn-primary ${ProductPageCSS["add-to-cart"]}`}
-                onClick={() => {
-                  if (cart.some((item) => item.id === singleProduct._id)) {
-                    toast.info("Item already exists in Cart", {
-                      position: "bottom-center",
-                      autoClose: 3000,
-                      hideProgressBar: true,
-                      closeOnClick: true,
-                      pauseOnHover: true,
-                      draggable: true,
-                      progress: undefined,
-                    });
-                  } else {
-                    dispatch({
-                      type: ADD_TO_CART,
-                      item: {
-                        id: singleProduct._id,
-                        title: singleProduct.title,
-                        imageSource: singleProduct.imageSource,
-                        listedPrice: singleProduct.listedPrice,
-                        sellingPrice: singleProduct.sellingPrice,
-                        rating: singleProduct.rating,
-                        instock: singleProduct.inStock,
-                        amount: singleProduct.amount,
-                      },
-                    });
-                    toast.info("Item added to Cart", {
-                      position: "bottom-center",
-                      autoClose: 3000,
-                      hideProgressBar: true,
-                      closeOnClick: true,
-                      pauseOnHover: true,
-                      draggable: true,
-                      progress: undefined,
-                    });
-                  }
-                }}
-              >
-                Add to cart
-              </button>
-              <button
+              {isLoggedIn ? (
+                <button
+                  className={`btn btn-primary ${ProductPageCSS["add-to-cart"]}`}
+                  onClick={() => {
+                    if (cart.some((item) => item.id === singleProduct?._id)) {
+                      toast.info("Item already exists in Cart", {
+                        position: "bottom-center",
+                        autoClose: 3000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                      });
+                    } else {
+                      dispatch({
+                        type: ADD_TO_CART,
+                        item: {
+                          id: singleProduct?._id,
+                          title: singleProduct?.title,
+                          imageSource: singleProduct?.imageSource,
+                          listedPrice: singleProduct?.listedPrice,
+                          sellingPrice: singleProduct?.sellingPrice,
+                          rating: singleProduct?.rating,
+                          instock: singleProduct?.inStock,
+                          amount: singleProduct?.amount,
+                        },
+                      });
+                      toast.info("Item added to Cart", {
+                        position: "bottom-center",
+                        autoClose: 3000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                      });
+                    }
+                  }}
+                >
+                  Add to cart
+                </button>
+              ) : (
+                <Link
+                  className={`btn btn-primary ${ProductPageCSS["add-to-cart"]}`}
+                  to="/SignIn"
+                >
+                  Add to cart
+                </Link>
+              )}
+              {isLoggedIn ? (
+                <button
+                  className={`btn btn-primary ${ProductPageCSS["product-button"]}`}
+                  onClick={() => {
+                    if (
+                      wishlist.some((item) => item.id === singleProduct?._id)
+                    ) {
+                      toast.info("Item already exists in Wishlist", {
+                        position: "bottom-center",
+                        autoClose: 3000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                      });
+                    } else {
+                      wishlistDispatch({
+                        type: ADD_TO_WISHLIST,
+                        item: {
+                          id: singleProduct?._id,
+                          title: singleProduct?.title,
+                          imageSource: singleProduct?.imageSource,
+                          listedPrice: singleProduct?.listedPrice,
+                          sellingPrice: singleProduct?.sellingPrice,
+                          rating: singleProduct?.rating,
+                          instock: singleProduct?.inStock,
+                          amount: singleProduct?.amount,
+                        },
+                      });
+                      toast.info("Item added to Wishlist", {
+                        position: "bottom-center",
+                        autoClose: 3000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                      });
+                    }
+                  }}
+                >
+                  Add to Wishlist
+                </button>
+              ) : (
+                <Link
                 className={`btn btn-primary ${ProductPageCSS["product-button"]}`}
-                onClick={() => {
-                  if (wishlist.some((item) => item.id === singleProduct._id)) {
-                    toast.info("Item already exists in Wishlist", {
-                      position: "bottom-center",
-                      autoClose: 3000,
-                      hideProgressBar: true,
-                      closeOnClick: true,
-                      pauseOnHover: true,
-                      draggable: true,
-                      progress: undefined,
-                    });
-                  } else {
-                    wishlistDispatch({
-                      type: ADD_TO_WISHLIST,
-                      item: {
-                        id: singleProduct._id,
-                        title: singleProduct.title,
-                        imageSource: singleProduct.imageSource,
-                        listedPrice: singleProduct.listedPrice,
-                        sellingPrice: singleProduct.sellingPrice,
-                        rating: singleProduct.rating,
-                        instock: singleProduct.inStock,
-                        amount: singleProduct.amount,
-                      },
-                    });
-                    toast.info("Item added to Wishlist", {
-                      position: "bottom-center",
-                      autoClose: 3000,
-                      hideProgressBar: true,
-                      closeOnClick: true,
-                      pauseOnHover: true,
-                      draggable: true,
-                      progress: undefined,
-                    });
-                  }
-                }}
-              >
-                Add to Wishlist
-              </button>
+                  to="/SignIn"
+                >
+                  Add to Wishlist 
+                </Link>
+              )}
             </div>
           </div>
         </div>

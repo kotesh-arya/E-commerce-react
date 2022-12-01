@@ -153,7 +153,7 @@ const Filters = () => {
                   dispatch({ type: IN_STOCK });
                 }}
               />
-              <label htmlFor="category-check-delivery">In Stock</label>
+              <label htmlFor="category-stock-delivery">In Stock</label>
             </div>
           </div>
 
