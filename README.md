@@ -5,7 +5,7 @@
 Daily Fashion
   <br></h1>
 
-<h4 align="center">An E-commerce App for Buying Fashionable items</h4>
+<h4 align="center">An E-commerce App for Buying Fashion items</h4>
 
 
 ## About Daily Fashion
@@ -14,12 +14,14 @@ Daily Fashion
 - In this App, users can see products based on different categories such as Watches, Bags, Shoes, Sunglasses etc for both men & Women.
 - Additionally we have implemented various features such as add products to cart, add to wishlist, payment Integration, etc.
 
-## Live Deployment
+## Live Deployment:  <a href="https://daily-fashion.netlify.app/" target="_blank">Daily Fashion</a>
 
-### Checkout the live deployment here:  <a href="https://daily-fashion.netlify.app/" target="_blank">Daily Fashion</a>
+
 
 
 ![Screenshot (318)](https://user-images.githubusercontent.com/69259490/204085670-e3188aef-c484-4b7d-ae0d-1a88c065a50b.png)
+![image](https://user-images.githubusercontent.com/69259490/229956493-2043c530-d355-439d-bd69-1c410422a9fb.png)
+
 
 ## Features
 
