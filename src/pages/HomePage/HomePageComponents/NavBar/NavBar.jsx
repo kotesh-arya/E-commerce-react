@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../../../Colours/colours.css";
 import "../NavBar/NavBar.css";
 import { Link } from "react-router-dom";
@@ -6,14 +6,23 @@ import { useCart } from "../../../../contexts/cartContext";
 import { useWishlist } from "../../../../contexts/wishlistContext";
 import { useAuth } from "../../../../contexts/authContext";
 
-const NavBar = () => {
+const NavBar = ({ isOpen, setIsOpen }) => {
   const { amount } = useCart();
   const { wishlist } = useWishlist();
   const { userName, isLoggedIn } = useAuth();
-
+  function toggleFilters() {
+    setIsOpen(!isOpen);
+  }
+  
   return (
     <div className="navigation-container flex-div">
       <div className="nav-left flex-div">
+        <i
+          onClick={toggleFilters}
+          className="fa fa-bars fa-2x header-icon hamburger"
+          aria-hidden="true"
+        ></i>
+
         <div className="nav-header">
           <Link className="site-title" to="/">
             <img

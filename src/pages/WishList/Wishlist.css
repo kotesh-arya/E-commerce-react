@@ -41,7 +41,7 @@
 }
 
 .badge-card {
-  width: 20rem;
+  width: 17rem;
 }
 
 .label {
@@ -80,9 +80,7 @@
   font-weight: bold;
 }
 
-.price {
-  font-weight: bold;
-}
+
 
 .wishlist-card-button {
   margin: 1rem 8px;
