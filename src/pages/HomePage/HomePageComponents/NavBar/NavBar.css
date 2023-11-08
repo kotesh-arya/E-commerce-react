@@ -95,6 +95,14 @@
 .header-icon:hover {
   color: var(--primary-color);
 }
+.hamburger {
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  .hamburger {
+    display: block;
+  }
+}
 @media screen and (max-width: 450px) {
   .header-shop-link {
     display: none;

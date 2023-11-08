@@ -12,7 +12,7 @@ import {
   SORT,
   IN_STOCK,
 } from "../../../constants/filterStateConstants";
-const Filters = () => {
+const Filters = ({ isOpen }) => {
   const { state, dispatch } = useProductsFilter();
 
   const {
@@ -27,7 +27,7 @@ const Filters = () => {
 
   return (
     <div>
-      <div className="filters-container">
+      <div className={`filters-container ${isOpen ? "reveal" : ""}`}>
         <form onSubmit={(e) => e.preventDefault()}>
           <div className="filter-header">
             <h3>Filters</h3>

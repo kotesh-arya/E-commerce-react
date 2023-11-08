@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavBar } from "../HomePage/HomePageComponents";
 import { Filters } from "./filters/filters";
 import { ProductlistCard } from "./ProductlistCard";
@@ -57,25 +57,47 @@ function ProductList() {
     sortedProducts,
     stockChecked
   );
+  const [isOpen, setIsOpen] = useState(false);
+  function closeSidebar() {
+    setIsOpen(false);
+  }
+  useEffect(() => {
+    const handleBodyClick = (event) => {
+      if (isOpen && !event.target.closest(".filters-container")) {
+        closeSidebar();
+      }
+    };
+    if (isOpen) {
+      document.body.addEventListener("click", handleBodyClick);
+    } else {
+      document.body.removeEventListener("click", handleBodyClick);
+    }
+
+    return () => {
+      document.body.removeEventListener("click", handleBodyClick);
+    };
+  }, [isOpen]);
 
   return (
     <div>
-      <NavBar />
+      <NavBar isOpen={isOpen} setIsOpen={setIsOpen} />
       <div className="wrapper">
-        <Filters />
+        <Filters isOpen={isOpen} />
         <div className="product-section">
-          <h1 className="header-large product-header">
-            Showing {finalFilteredProducts.length} Products
-          </h1>
-          <hr />
-          <div className="product-container">
-            {finalFilteredProducts.map((product) => {
-              if (product.inStock) {
-                return <ProductlistCard key={product._id} {...product} />;
-              } else {
-                return <OutOfStockCard key={product._id} {...product} />;
-              }
-            })}
+          <div>
+            <p className="header-large product-header">
+              Showing {finalFilteredProducts.length} Products
+            </p>
+            <hr />
+            <div className="product-container">
+              {finalFilteredProducts.map((product) => {
+                if (product.inStock) {
+                  return <ProductlistCard key={product._id} {...product} />;
+                } else {
+                  return <OutOfStockCard key={product._id} {...product} />;
+                }
+              })}
+            </div>
           </div>
         </div>
       </div>
